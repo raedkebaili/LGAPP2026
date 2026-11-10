@@ -1,0 +1,45 @@
+{
+  "name": "loup-garou-bel-tounsi",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n SRV,WEB -c magenta,cyan \"node server/index.mjs\" \"vite\"",
+    "server": "node server/index.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "sim": "esbuild scripts/sim.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=.sim.mjs --log-level=error && node .sim.mjs",
+    "assets": "python3 scripts/build_app_assets.py",
+    "sync": "npm run build && npx cap sync",
+    "android": "npm run sync && npx cap open android",
+    "ios": "npm run sync && npx cap open ios",
+    "apk": "npm run sync && cd android && ./gradlew assembleDebug && echo '→ android/app/build/outputs/apk/debug/app-debug.apk'",
+    "apk:release": "npm run sync && cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/camera": "^8.2.6",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/ios": "^8.6.0",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
+    "express": "^4.21.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
