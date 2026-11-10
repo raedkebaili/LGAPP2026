@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ar-TN" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOUP GAROU BEL TOUNSI — كتيّب القوانين v1.1</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0d0f16;color:#e8e6e3;
+    font-family:"Segoe UI","Noto Naskh Arabic","Traditional Arabic",Tahoma,Arial,sans-serif;
+    line-height:1.95;font-size:17px;padding:0 0 60px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  header{text-align:center;padding:48px 20px 36px;
+    background:radial-gradient(ellipse at top,#1d1527 0%,#0d0f16 70%);border-bottom:1px solid #2a2438}
+  header .moon{font-size:46px;display:block;margin-bottom:6px}
+  h1{font-size:38px;letter-spacing:2px;direction:ltr;
+    background:linear-gradient(90deg,#f2c14e,#e0683b,#f2c14e);
+    -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+  header .ar{font-size:26px;color:#c9c3d6;margin-top:4px}
+  header .ver{font-size:14px;color:#7d7792;margin-top:12px;letter-spacing:1px}
+  h2{font-size:25px;color:#f2c14e;margin:48px 0 16px;padding-bottom:10px;border-bottom:2px solid #2a2438}
+  h2 .n{display:inline-block;background:#f2c14e;color:#0d0f16;width:34px;height:34px;line-height:34px;
+    text-align:center;border-radius:9px;font-size:17px;margin-left:10px;font-weight:800}
+  h3{font-size:21px;color:#9fd7c5;margin:28px 0 10px}
+  p{margin:10px 0}
+  .lead{background:#161925;border-right:4px solid #e0683b;padding:16px 18px;border-radius:0 12px 12px 0;margin:16px 0}
+  .quote{color:#d9cfae;font-size:18px;line-height:2.15}
+  .note{background:#1a1420;border:1px dashed #6b4a7a;border-radius:12px;padding:14px 18px;margin:18px 0;color:#d6c4e4;font-size:16px}
+  .new{background:#0f2418;border:1px solid #3fbf82;border-radius:12px;padding:14px 18px;margin:18px 0;color:#bdf0d6;font-size:16px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px;background:#12141d;border-radius:12px;overflow:hidden}
+  th{background:#1e2230;color:#f2c14e;padding:11px 12px;text-align:right;font-weight:700}
+  td{padding:10px 12px;border-top:1px solid #1e2230;vertical-align:top}
+  td.fr,th.fr{direction:ltr;text-align:left;color:#9fd7c5;font-weight:700}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(325px,1fr));gap:16px;margin:18px 0}
+  .card{background:#12141d;border:1px solid #232838;border-radius:16px;padding:16px 18px;position:relative}
+  .card.village{border-top:4px solid #4ea3f2}
+  .card.loup{border-top:4px solid #e0683b}
+  .card.solo{border-top:4px solid #b06bd9}
+  .card .badge-new{position:absolute;left:14px;top:-11px;background:#3fbf82;color:#06231a;
+    font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;letter-spacing:.5px}
+  .card h4{direction:ltr;text-align:left;font-size:21px;color:#fff;margin-bottom:3px;letter-spacing:.4px}
+  .camp{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+  .camp.village{background:#14314d;color:#8cc8ff}
+  .camp.loup{background:#4a2015;color:#ffab87}
+  .camp.solo{background:#331a44;color:#dcaaf5}
+  .card .desc{color:#d9cfae;font-size:16.5px;line-height:2}
+  .card .mec{font-size:15px;color:#a9b0c4;border-top:1px dashed #2a2f42;margin-top:11px;padding-top:9px}
+  .card .mec b{color:#f2c14e}
+  .say{font-size:15px;color:#9fd7c5;background:#101a18;border-radius:10px;padding:8px 11px;margin-top:10px}
+  .ask{font-size:14.5px;color:#f0b86e;background:#241b10;border-radius:10px;padding:8px 11px;margin-top:9px}
+  .ok{font-size:14.5px;color:#8ce0b0;background:#0f1f17;border-radius:10px;padding:8px 11px;margin-top:9px}
+  ol,ul{margin:10px 26px 10px 0}
+  li{margin:7px 0}
+  .tag{display:inline-block;background:#1e2230;color:#f2c14e;border-radius:6px;padding:1px 8px;font-size:14px;margin-left:4px}
+  .q{background:#12141d;border-right:4px solid #f2c14e;border-radius:0 12px 12px 0;padding:12px 16px;margin:10px 0}
+  .q b.num{color:#e0683b}
+  .yes{color:#6ee7a8;font-weight:800}
+  .no{color:#ff8a7a;font-weight:800}
+  footer{text-align:center;color:#5d5872;font-size:14px;margin-top:50px;padding-top:20px;border-top:1px solid #1e2230}
+  code{background:#1e2230;padding:1px 6px;border-radius:5px;font-size:15px;direction:ltr;display:inline-block}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="moon">🌙🐺</span>
+  <h1>LOUP GAROU BEL TOUNSI</h1>
+  <div class="ar">كتيّب القوانين — اللعبة بالتونسي</div>
+  <div class="ver">النسخة 1.3 · 22 دور · Voleur زادة 🃏 · التصاور الكل جاهزين 🎨</div>
+</header>
+
+<div class="wrap">
+
+<div class="new">
+  <b>🆕 واش تبدّل في النسخة 1.3</b>
+  <ul>
+    <li>🃏 <b>دور جديد: <span class="fr">Voleur</span></b> — من اللعبة الرسميّة. زوز كارطات في وسط الطاولة، يبدّل في الليلة الأولى قبل الكل.</li>
+    <li>🐑 <b><span class="fr">Berger</span> تصلّح</b> — يبعث <b>خرفانو الكل</b> كل ليلة (موش خروف واحد)، والخبر يتعلن الصباح <b>بالأعداد برك بلا أسماء</b>.</li>
+    <li>🔫 <b><span class="fr">Barbier</span> تصلّح</b> — راجل بلحية عندو <b>فوسي وطلقة وحدة</b>، موش حجّام.</li>
+    <li>🎨 <b>التصاور الكل كمّلو</b> — 22 كارطة + ظهر الكارطة + أيقونة الأپليكاسيون.</li>
+    <li>دخّلنا <b>الأجوبة متاعك الكل</b> (Loup Rouge · Salvateur · Ancien Sage · Loup Noir · Corbeau · Berger · Barbier · Détective...).</li>
+    <li>زدنا <b>6 أدوار رسميّة</b> من اللعبة الأصليّة (Thiercelieux): <span class="tag">Cupidon</span> <span class="tag">Enfant Sauvage</span> <span class="tag">Servante Dévouée</span> <span class="tag">Renard</span> <span class="tag">Grand Méchant Loup</span> <span class="tag">Voleur</span> — مكتوبين حسب <b>القانون الرسمي</b>.</li>
+    <li>زدنا <b>جدول الكلانات</b> متاع Détective (الباب 5).</li>
+    <li>✅ <b>الأسئلة الكل تجاوبت</b> — Pyromane · Alien · Sorcière (الباب 12).</li>
+    <li>🎨 زدنا <b>الثيم «ليل الحومة»</b> و<b>نظام التصاور بـ4 طبقات</b> (الباب 13).</li>
+    <li>🗂️ المعطيات الكل ولّات في <code>data/roles.json</code> — جاهزة للكود.</li>
+  </ul>
+</div>
+
+<h2><span class="n">1</span> الفكرة</h2>
+<div class="lead quote">
+  في حومة صغيرة، الكل يعرف الكل... حتّى جات ليلة وسمعوا عواء. الصباح لقاو واحد ميّت قدّام باب داره.<br>
+  من يومها، الحومة ولّات تخاف من الليل... قالوا <b>الذيابة ساكنين بينانا</b>، ولابسين وجوه ناس نعرفوهم.
+</div>
+<p>الأپليكاسيون موجّهة <b>للمعلّم (le narrateur)</b>: توزّع الأدوار، تقوّلو الكلام، تنادي كل دور في وقتو، تحسب الموتى والأصوات، وتعرف وحدها شكون ربح.</p>
+
+<h2><span class="n">2</span> كلام الأپليكاسيون</h2>
+<table>
+  <tr><th class="fr">Français</th><th>في الأپليكاسيون</th><th class="fr">Français</th><th>في الأپليكاسيون</th></tr>
+  <tr><td class="fr">Le Narrateur</td><td><b>المعلّم</b></td><td class="fr">Le vote</td><td><b>رفع اليدّين</b></td></tr>
+  <tr><td class="fr">La partie</td><td><b>طبقة</b></td><td class="fr">Éliminé</td><td><b>طار</b></td></tr>
+  <tr><td class="fr">Les joueurs</td><td><b>اللعّابة</b></td><td class="fr">Le débat</td><td><b>قعدة الحومة</b></td></tr>
+  <tr><td class="fr">Le village</td><td><b>الحومة</b></td><td class="fr">Le minuteur</td><td><b>وقت القهوة</b></td></tr>
+  <tr><td class="fr">Les loups</td><td><b>الذيابة</b></td><td class="fr">Tour de parole</td><td><b>الكلمة تدور</b></td></tr>
+  <tr><td class="fr">Nuit / Jour</td><td><b>الليل / النهار</b></td><td class="fr">Les amoureux</td><td><b>الحبايب</b></td></tr>
+</table>
+
+<h2><span class="n">3</span> الفرق</h2>
+<table>
+  <tr><th>الفريق</th><th class="fr">Rôles</th><th>شرط الربح</th></tr>
+  <tr><td>🐺 <b>الذيابة</b></td><td class="fr">Loup Garou · Loup Rouge · Loup Père Infecte · Loup Noir · Grand Méchant Loup</td><td>عددهم ≥ الباقين</td></tr>
+  <tr><td>🏘️ <b>الحومة</b></td><td class="fr">Villageois · Voyante · Salvateur · Sorcière · Ancien Sage · Détective · Ours · Corbeau · Berger · Barbier · Voleur · Cupidon · Servante Dévouée · Renard · Enfant Sauvage</td><td>يموتو الذيابة الكل + الوحدانيّة</td></tr>
+  <tr><td>💔 <b>الحبايب</b></td><td class="fr">(Cupidon يصنعهم)</td><td>كان من فرقتين مختلفتين: يبقاو هوما الزوز آخر ناس</td></tr>
+  <tr><td>🔥 <b>وحداني</b></td><td class="fr">Pyromane · Alien</td><td>🔸 باقي يتحدّد (الباب 12)</td></tr>
+</table>
+
+<h2><span class="n">4</span> الأدوار <span class="tag">22 دور</span></h2>
+
+<h3>🐺 فريق الذيابة</h3>
+<div class="cards">
+
+  <div class="card loup">
+    <h4>Loup Garou</h4><span class="camp loup">الذيابة</span>
+    <div class="desc">المعلّم <b>يقيّمهم كل ليلة</b>، وهوما يختارو <b>شكون باش يقتلو</b>.</div>
+    <div class="mec"><b>كل ليلة:</b> يفيقو مع بعضهم، يتعارفو، ويتّفقو بالإشارة وبلا حسّ على ضحيّة وحدة. <b>الذيب ما ياكلش ذيب.</b></div>
+    <div class="say">🗣️ «الحومة الكل راقدة... <b>Les Loups Garous يفيقو</b>. شوفو بعضكم، وأشّرو على اللي باش ياكلوه الليلة.»</div>
+  </div>
+
+  <div class="card loup">
+    <h4>Loup Rouge</h4><span class="camp loup">الذيابة</span>
+    <div class="desc">عندو الحقّ كل ليلة <b>يقوم قبل الذيابة الآخرين</b>، ويختار <b>شكون يبلوكي</b> — القوّة متاع هذاكة <b>ما تخدمش الليلة</b>.</div>
+    <div class="mec">✅ <b>ينجّم يبلوكي حتّى ذيب</b> من صحابو.<br>🚫 <b>ما ينجّمش يبلوكي نفس اللاعب زوز ليالي ورا بعضهم.</b><br>الأپليكاسيون تلغي أوتوماتيك العمل متاعو وتورّي للمعلّم ⚠️ «فلان مبلوكي الليلة».</div>
+    <div class="say">🗣️ «<b>Le Loup Rouge</b> يفيق وحدو قبل صحابو. شكون باش تبلوكي الليلة؟»</div>
+    <div class="ok">✔️ مصادق عليه</div>
+  </div>
+
+  <div class="card loup">
+    <h4>Loup Père Infecte</h4><span class="camp loup">الذيابة</span>
+    <div class="desc">من <b>الليلة الثانية</b> يقوم <b>وحدو بعد الذيابة</b>، ويختار كان <b>يعدّي</b> للشخص اللي قتلوه الذيابة ولّا لا.</div>
+    <div class="mec"><b>مرّة وحدة في الطبقة برك.</b> كان عدّى: الضحيّة ما تموتش، تولّي <b>ذيب</b> وتحافظ على القوّة متاعها. ومن بعد ما يعدّي، <b>ما عادش يفيق وحدو</b>.</div>
+    <div class="say">🗣️ «<b>Le Loup Père Infecte</b> يفيق وحدو. هاذا هو اللي قتلتوه... تحبّ تعدّيلو؟»</div>
+    <div class="ok">✔️ مصادق عليه — مرّة وحدة</div>
+  </div>
+
+  <div class="card loup">
+    <h4>Loup Noir</h4><span class="camp loup">الذيابة</span>
+    <div class="desc">كل ليلة يختار شخص. الشخص هذاكة كي يجي الصباح <b>ما عندوش الحقّ يتكلّم ولا يڤوتي</b> — وكان تكلّم ولّا ڤوتى، <b>يتحيّد من اللعبة</b>.</div>
+    <div class="mec">🤫 <b>المعلّم ما يعلنش الإسم</b> — الحاجة تبقى سرّيّة بين المعلّم واللاعب (المعلّم يشدّو في كتفو ولّا يعلّمو قبل).<br>الأپليكاسيون تورّي 🤐 للمعلّم برك، وعندو بوتون <b>«تكلّم → خرج»</b>.</div>
+    <div class="say">🗣️ «<b>Le Loup Noir</b> يفيق. شكون باش تسكّرلو فمّه غدوة؟»</div>
+    <div class="ok">✔️ مصادق عليه — بالسكّات</div>
+  </div>
+
+  <div class="card loup">
+    <div class="badge-new">رسمي · جديد</div>
+    <h4>Grand Méchant Loup</h4><span class="camp loup">الذيابة</span>
+    <div class="desc">ذيب ضخم وكرشو ما تشبعش. ياكل مع الذيابة كيف الكل، <b>وزيد يفيق وحدو مرّة ثانية ويقتل ضحيّة زايدة</b>.<br>
+    أما هالقوّة تطيح منّو <b>كيف يموت أيّ ذيب</b> (ولّا Enfant Sauvage اللي ولّى ذيب).</div>
+    <div class="mec">ضحيّة <b>ثانية كل ليلة</b>، بشرط: <b>ما مات حتّى ذيب</b> في الطبقة. <b>ما ينجّمش ياكل ذيب.</b> الأپليكاسيون تطفي الدور متاعو وحدها كيف يموت أوّل ذيب.</div>
+    <div class="say">🗣️ «<b>Le Grand Méchant Loup</b> يفيق وحدو. شكون باش تاكل زادة الليلة؟»</div>
+  </div>
+
+</div>
+
+<h3>🏘️ فريق الحومة</h3>
+<div class="cards">
+
+  <div class="card village">
+    <h4>Villageois</h4><span class="camp village">الحومة</span>
+    <div class="desc">ما عندك حتّى قوّة. عندك كان <b>لسانك وعقلك</b>. أقعد، اسمع مليح، وشوف شكون اللي كلامو ما يمشيش.</div>
+    <div class="mec"><b>بالليل:</b> ما يفيقش. <b>بالنهار:</b> يحكي ويڤوتي كيف الكل.</div>
+    <div class="ok">✔️ مصادق عليه — زدناه</div>
+  </div>
+
+  <div class="card village">
+    <h4>Voyante</h4><span class="camp village">الحومة</span>
+    <div class="desc">عندها الحقّ <b>كل ليلة تختار شخص باش تعرف الدور متاعو</b>.</div>
+    <div class="mec">المعلّم يوريها <b>الكارطة بالضبط</b> (موش برك ذيب ولّا لا).</div>
+    <div class="say">🗣️ «<b>La Voyante</b> تفيق. شكون تحبّ تشوف الدور متاعو الليلة؟»</div>
+  </div>
+
+  <div class="card village">
+    <h4>Salvateur</h4><span class="camp village">الحومة</span>
+    <div class="desc">يختار كل ليلة واحد <b>يحميه من هجمة الذيابة</b>.</div>
+    <div class="mec">✅ <b>ينجّم يحمي روحو.</b><br>🚫 <b>ما ينجّمش يحمي نفس الشخص زوز ليالي ورا بعضهم.</b><br>🚫 ما يحميش من: Pyromane · Barbier · Alien · Sorcière · حكم الحومة.</div>
+    <div class="say">🗣️ «<b>Le Salvateur</b> يفيق. على شكون باش تحرس الليلة؟»</div>
+    <div class="ok">✔️ مصادق عليه</div>
+  </div>
+
+  <div class="card village">
+    <h4>Sorcière</h4><span class="camp village">الحومة</span>
+    <div class="desc">عندها <b>شربة الحياة</b> تحيي بيها اللي قتلوه الذيابة، و<b>شربة الموت</b> تقتل بيها شخص.</div>
+    <div class="mec">تفيق <b>آخر وحدة</b> باش تشوف ضحيّة الليلة.</div>
+    <div class="say">🗣️ «<b>La Sorcière</b> تفيق. هاذا هو اللي قتلوه الليلة... تحبّ تحيّيه؟ وتحبّ تقتل في حدّ؟»</div>
+    <div class="ok">✔️ مصادق عليه — كيف اللعبة الرسميّة: <b>كل شربة مرّة وحدة</b> · تنجّم تستعمل الزوز في نفس الليلة · تنجّم تحيي روحها</div>
+  </div>
+
+  <div class="card village">
+    <h4>Ancien Sage</h4><span class="camp village">الحومة</span>
+    <div class="desc"><b>كبير القرية.</b> يلزمو <b>زوز ضربات من الذيابة باش يموت</b> (ينجّمو يكونو في ليالي متفرّقة، ما يلزمهمش ورا بعضهم).<br>
+    وكان الحومة قتلوه بالڤوت → <b>الكل يخسرو القوى متاعهم</b>.<br>
+    والمعلّم يقيّمو كل ليلة باش يختار <b>اتّجاه الكلمة تدور</b>: مع ولّا ضدّ عقارب الساعة.</div>
+    <div class="mec"><b>روحين</b> ضدّ الذيابة — العدّاد يتعمّر حتّى في ليالي بعيدة على بعضها. مات بالڤوت → <b>كل أدوار الحومة تخسر قواها</b> للآخر.</div>
+    <div class="say">🗣️ «<b>L'Ancien Sage</b> يفيق. الكلمة غدوة تدور <b>مع</b> ولّا <b>ضدّ</b> عقارب الساعة؟»</div>
+    <div class="ok">✔️ مصادق عليه — ليالي متفرّقة</div>
+  </div>
+
+  <div class="card village">
+    <h4>Détective</h4><span class="camp village">الحومة</span>
+    <div class="desc">يختار <b>زوز أشخاص</b>، والمعلّم يقوللو كان <b>نفس الكلان</b> ولّا <b>زوز أعداء</b>.</div>
+    <div class="mec">الجواب: 👍 نفس الكلان / 👎 أعداء. شوف <b>جدول الكلانات</b> في الباب 5 — الأپليكاسيون تحسبها وحدها.</div>
+    <div class="say">🗣️ «<b>Le Détective</b> يفيق. أشّر على زوز... نفس الكلان ولّا أعداء؟»</div>
+    <div class="ok">✔️ مصادق عليه</div>
+  </div>
+
+  <div class="card village">
+    <h4>Ours</h4><span class="camp village">الحومة</span>
+    <div class="desc">كل صباح: كان المعلّم قال <b>الدبّ يڤرڤر</b> → يعني واحد من الزوز القاعدين <b>على يمينو ولّا على يسارو</b> هو <b>loup</b>. وكان قال <b>ما يڤرڤرش</b> → الزوز villageois.</div>
+    <div class="mec"><b>ما يفيقش</b> — الإعلان قدّام الكل كل صباح. الجيران = <b>أقرب لاعبين أحياء</b> على اليمين واليسار (اللي ماتو يتعدّاوهم).</div>
+    <div class="say">🗣️ «صباح الخير... <b>الدبّ يڤرڤر! 🐻</b>» / «... <b>الدبّ ساكت الصباح هذا.</b>»</div>
+    <div class="ok">✔️ مصادق عليه — الجيران الأحياء</div>
+  </div>
+
+  <div class="card village">
+    <h4>Corbeau</h4><span class="camp village">الحومة</span>
+    <div class="desc">كل ليلة يختار شكون <b>يزيدلو أصوات</b> في الڤوت.</div>
+    <div class="mec"><b>+2 صوت</b> ضدّ الهدف في ڤوت الصباح. <b>الدور من فريق الحومة.</b></div>
+    <div class="say">🗣️ «<b>Le Corbeau</b> يفيق. على شكون باش تحطّ الزوز أصوات؟»</div>
+    <div class="ok">✔️ مصادق عليه — +2 · villageois</div>
+  </div>
+
+  <div class="card village">
+    <h4>Berger</h4><span class="camp village">الحومة</span>
+    <div class="desc">عندو <b>قطيع خرفان</b> — <b>المعلّم هو اللي يحدّد العدد من البداية</b>.<br>
+    كل ليلة يبعث <b>خرفانو الكل اللي باقيين</b> — <b>خروف لكل واحد</b>، ما ينجّمش يبعث زوز خرفان لنفس الشخص.<br>
+    <b>وكي يكمّلو الخرفان الكل، يولّي Villageois عادي.</b></div>
+    <div class="mec"><b>نتيجة كل خروف:</b><br>
+    ☠️ <b>مات</b> → الشخص <b>loup</b> · الخروف <b>يتشطب للآخر</b>.<br>
+    💧 <b>رجع مبلول</b> → الشخص هو <b>Pyromane</b> ولّا واحد <b>مبلول بالإيسانس</b>. الخروف <b>يرجع ويتبعث مرّة أخرى</b>، أما يبقى مبلول — وكان الـ Pyromane شعّل النار، <b>يحرق معا الناس المبلولين</b>.<br>
+    ✅ <b>رجع بخير</b> → لا ذيب لا مبلول.<br><br>
+    <b>📣 خبر الصباح — علني أما بلا أسماء:</b> المعلّم يقول <b>الأعداد برك</b> قدّام الحومة الكل («ماتو زوز خرفان ورجع واحد مبلول»)، <b>ما يسمّيش شكون زاروه</b>.<br>
+    <b>الـ Berger وحدو يعرف وين بعث خرفانو</b> — منها يستنتج («واحد من الثلاثة اللي بعثتلهم ذيب»)، وينجّم يحكي ولّا يسكت ولّا يكذب في قعدة الحومة.</div>
+    <div class="say">🗣️ «<b>Le Berger</b> يفيق. باقيلك <b>3 خرفان</b> — لعند شكون تبعثهم الليلة؟»<br>
+    🗣️ الصباح: «خبر الرعيان — ☠️ خروف واحد مات، 💧 خروف رجع مبلول، ✅ خروف رجع بخير.»</div>
+    <div class="ok">✔️ مصادق عليه — خرفانو الكل كل ليلة · خبر علني بالأعداد برك · الميّت يتشطب، المبلول يتعاود</div>
+  </div>
+
+  <div class="card village">
+    <h4>Barbier</h4><span class="camp village">الحومة</span>
+    <div class="desc"><b>راجل بلحية، عندو فوسي و<span style="color:#E9B44C">طلقة وحدة برك</span></b> في الطبقة الكل.<br>
+    يتفاهم مع المعلّم على <b>إشارة</b>. كيف يعملها، المعلّم <b>يرقّد الناس الكل</b> ويقيّمو وحدو، ويختار <b>على شكون يطلق</b>:<br>
+    🐺 ضرب <b>loup</b> → <b>يعيش</b>.<br>
+    🔥 ضرب <b>joueur solo</b> (Pyromane / Alien) → <b>يعيش زادة</b>.<br>
+    🏘️ ضرب <b>villageois</b> → <b>يموت معاه</b> (الطلقة طاحت في غير بلاصتها).</div>
+    <div class="mec"><b>طلقة وحدة برك في الطبقة.</b> دور مفعّل باليد: بوتون 🔫 <b>«Le Barbier عمل الإشارة»</b> عند المعلّم، ينجّم يضغطو في أي وقت.</div>
+    <div class="say">🗣️ «الكل يغمّض عينيه... <b>Le Barbier</b> يفيق. عندك <b>طلقة وحدة</b> — على شكون باش تطلق؟»</div>
+    <div class="ok">✔️ مصادق عليه — طلقة وحدة · ينجّي من الـ solo</div>
+  </div>
+
+  <div class="card village">
+    <div class="badge-new">رسمي · جديد 🆕</div>
+    <h4>Voleur</h4><span class="camp village">يبدا الحومة — ينجّم يتبدّل</span>
+    <div class="desc"><b>الليلة الأولى برك، وقبل الكل.</b><br>
+    كان لعبنا بالـ Voleur، نزيدو <b>زوز كارطات <span class="fr">Villageois</span> زيادة</b> في الباكي. بعد التوزيع، الزوز كارطات اللي فضلو يتحطّو <b>مقلوبين في وسط الطاولة</b>.<br>
+    الـ Voleur يشوفهم، وينجّم <b>يبدّل الكارطة متاعو</b> بوحدة منهم.</div>
+    <div class="mec">🐺 كان <b>الزوز كارطات ذيابة</b> → <b>مجبور</b> ياخذ وحدة منهم ويولّي ذيب.<br>
+    🔀 كان لا → حرّ: يبدّل ولّا يخلّي كارطتو.<br>
+    ✅ كيف يبدّل، <b>يلعب بالدور الجديد للآخر</b> والفرقة متاعو تتبدّل معاه. وكان الدور الجديد يخدم في الليلة الأولى (<span class="fr">Cupidon · Enfant Sauvage</span>) → <b>يلعبو في نفس الليلة</b>، بعد ما يبدّل.<br>
+    🙂 كان خلّى كارطتو → يولّي <b><span class="fr">Villageois</span> عادي</b> بلا قوّة.</div>
+    <div class="say">🗣️ «<b>Le Voleur</b> يفيق. هاك الزوز كارطات اللي في الوسط... تحبّ تبدّل، ولّا تخلّي كارطتك؟»</div>
+    <div class="ok">✔️ القانون الرسمي — <span class="fr">Thiercelieux</span></div>
+  </div>
+
+  <div class="card village">
+    <div class="badge-new">رسمي · جديد</div>
+    <h4>Cupidon</h4><span class="camp village">الحومة</span>
+    <div class="desc"><b>الليلة الأولى برك</b>، يأشّر على <b>زوز لعّابة</b> ويخلّيهم <b>حبايب</b> (ينجّم يختار روحو).<br>
+    كان مات واحد فيهم، <b>الآخر يموت بالقهر في نفس اللحظة</b>.<br>
+    الحبيب <b>ما ينجّمش يڤوتي ضدّ حبيبو</b> ولا يضرّو، حتّى بالتمثيل.</div>
+    <div class="mec">بعد ما يختار، المعلّم <b>يمشي يشدّ في كتف</b> الزوز بالسكّات، ومن بعد <b>الحبايب يفيقو ويتعارفو</b> (بلا ما يوريو كارطاتهم).<br>
+    كان الزوز من <b>فرقتين مختلفتين</b> (ذيب + villageois) → يولّيو <b>فريق ثالث</b> ولازمهم يبقاو هوما الزوز.</div>
+    <div class="say">🗣️ «<b>Cupidon</b> يفيق ويختار زوز حبايب... توّا <b>الحبايب يفيقو ويتعارفو</b>، ويرجعو يرقدو.»</div>
+  </div>
+
+  <div class="card village">
+    <div class="badge-new">رسمي · جديد</div>
+    <h4>Enfant Sauvage</h4><span class="camp village">الحومة ← الذيابة</span>
+    <div class="desc">كبر في الغابة مع الذيابة. <b>الليلة الأولى يختار «المودال» متاعو</b> — لاعب يقلّدو.<br>
+    طول ما المودال <b>حيّ</b> → هو <b>villageois</b> عادي.<br>
+    وكيف يموت المودال → <b>يولّي Loup Garou</b> ويفيق مع الذيابة من الليلة اللي بعدها للآخر.</div>
+    <div class="mec">الأپليكاسيون تعرف المودال وتبدّل الفريق <b>وحدها</b> كيف يموت. <b>ملاحظة:</b> كي يولّي ذيب ويموت، الـ Grand Méchant Loup يخسر القوّة متاعو زادة.</div>
+    <div class="say">🗣️ «<b>L'Enfant Sauvage</b> يفيق ويختار المودال متاعو.»</div>
+  </div>
+
+  <div class="card village">
+    <div class="badge-new">رسمي · جديد</div>
+    <h4>Servante Dévouée</h4><span class="camp village">الحومة</span>
+    <div class="desc">قبل ما يتكشف دور اللي <b>حكمت عليه الحومة بالڤوت</b>، تنجّم <b>تكشف روحها</b> وتاخذ الكارطة متاعو:<br>
+    هي <b>تخسر كارطتها</b> وتولّي تلعب <b>الدور متاعو</b> للآخر، والكارطة ما تتوراش للناس.</div>
+    <div class="mec">القوى يرجعو <b>جداد</b> (مثلاً شربات Sorcière ترجع كاملة). <b>كان هي حبيبة (amoureuse)، ما تنجّمش تستعمل القوّة متاعها</b> — أما المعلّم يسألها برك باش ما يبانش شيء.</div>
+    <div class="say">🗣️ «قبل ما نكشفو الكارطة... <b>La Servante Dévouée</b>، تحبّ تاخذ بلاصتو؟»</div>
+    <div class="ask">🔸 تخدم كان على موت <b>الڤوت</b> (القانون الرسمي) ولّا حتّى على موت <b>الليل</b>؟</div>
+  </div>
+
+  <div class="card village">
+    <div class="badge-new">رسمي · جديد</div>
+    <h4>Renard</h4><span class="camp village">الحومة</span>
+    <div class="desc">كل ليلة يأشّر على <b>لاعب</b>، والمعلّم يشوف <b>هو وجارو اليمين وجارو اليسار</b> (3 ناس):<br>
+    👍 <b>فمّا ذيب فيهم</b> → الـ Renard <b>يحافظ على القوّة متاعو</b> ويعاود ليلة أخرى.<br>
+    👎 <b>ما فمّاش ذيب</b> → <b>يخسر القوّة متاعو للآخر</b>... أما برّأ 3 ناس دفعة وحدة!</div>
+    <div class="mec">يحتاج <b>ترتيب القعدة</b>. الجيران = الأحياء برك. ينجّم يختار ما يشمّش في ليلة ويعاود في اللي بعدها.</div>
+    <div class="say">🗣️ «<b>Le Renard</b> يفيق. تحبّ تشمّ الليلة؟ أشّر على واحد — ونشوفو هو وجيرانو.»</div>
+  </div>
+
+</div>
+
+<h3>🔥 الأدوار الوحدانيّة</h3>
+<div class="cards">
+
+  <div class="card solo">
+    <h4>Pyromane</h4><span class="camp solo">وحداني</span>
+    <div class="desc">كل ليلة يختار: <b>يبلّل</b> ناس بالإيسانس، ولّا <b>يشعل النار</b> في اللي بلّلهم قبل.<br>
+    <b>يربح كان بقى وحدو في الحومة</b> — يعني كي يحرق الكل.</div>
+    <div class="mec">عمل واحد في الليلة: 💧 <b>يبلّل</b> ولّا 🔥 <b>يحرق</b>. وقت ما يحرق، <b>المبلولين الكل يموتو دفعة وحدة</b>. الـ Salvateur <u>ما يحميش</u> من النار.<br><br>
+    🔗 <b>عدد اللي يبلّلهم في الليلة = عدد خرفان الـ Berger من البداية − 1.</b><br>
+    مثال: Berger بدا بـ <b>3 خرفان</b> ← الـ Pyromane يبلّل <b>2</b> كل ليلة.<br>
+    <span style="color:#9AA0B8;font-size:14px">(كان ما فمّاش Berger في الطبقة، المعلّم يحدّد العدد — الافتراضي <b>2</b>.)</span></div>
+    <div class="say">🗣️ «<b>Le Pyromane</b> يفيق. تحبّ تبلّل في حدّ، ولّا تشعل النار؟»</div>
+    <div class="ok">✔️ مصادق عليه — يربح وحدو · العدد مربوط بالـ Berger</div>
+  </div>
+
+  <div class="card solo">
+    <h4>Alien</h4><span class="camp solo">وحداني</span>
+    <div class="desc">يتفاهم مع المعلّم على <b>إشارة</b>. وقت ما يحبّ يعطيها، المعلّم <b>يرقّد القرية</b> ويقيّمو، وهو <b>يسمّي دور متاع شخص</b>:<br>
+    🎯 <b>صاب</b> → هو يعيش و<b>الشخص يموت</b>.<br>
+    ❌ <b>غلط</b> → <b>هو اللي يموت</b>.</div>
+    <div class="mec">دور مفعّل باليد: بوتون 👽 عند المعلّم. الأپليكاسيون تثبّت في التخمين وتحكم وحدها.<br>
+    <b>عدوّ للكلّ</b>: للحومة وللذيابة وللـ Pyromane وللحبايب.<br>
+    <b>يربح كان بقى وحدو في الحومة.</b><br>
+    <span style="color:#9AA0B8;font-size:14px">عدد التخمينات: <b>بلا حدّ</b> — على خاطر كل غلطة تقتلو، فالخطر هو اللي يحدّدو. (قوللي كان تحبّ نحدّدوه مثلاً بـ 3.)</span></div>
+    <div class="say">🗣️ «الكل يغمّض... <b>Alien</b> يفيق. شكون؟ وشنوّة الدور متاعو؟»</div>
+    <div class="ok">✔️ مصادق عليه — يربح وحدو</div>
+  </div>
+
+</div>
+
+<h2><span class="n">5</span> جدول الكلانات متاع Détective</h2>
+<p>الجواب اللي يعطيه المعلّم: 👍 <span class="yes">نفس الكلان</span> ولّا 👎 <span class="no">أعداء</span>. الأپليكاسيون تحسبها وحدها.</p>
+<table>
+  <tr><th class="fr">A ↔ B</th><th>الجواب</th><th>التفسير</th></tr>
+  <tr><td class="fr">Villageois ↔ Villageois</td><td class="yes">👍 نفس الكلان</td><td>الزوز من الحومة</td></tr>
+  <tr><td class="fr">Loup ↔ Loup</td><td class="yes">👍 نفس الكلان</td><td>الزوز ذيابة</td></tr>
+  <tr><td class="fr">Villageois ↔ Loup</td><td class="no">👎 أعداء</td><td>الفرق الكلاسيكي</td></tr>
+  <tr><td class="fr">Alien ↔ Villageois</td><td class="no">👎 أعداء</td><td rowspan="4">اللاعب الوحداني <b>عدوّ للكلّ</b></td></tr>
+  <tr><td class="fr">Alien ↔ Loup</td><td class="no">👎 أعداء</td></tr>
+  <tr><td class="fr">Alien ↔ Pyromane</td><td class="no">👎 أعداء</td></tr>
+  <tr><td class="fr">Pyromane ↔ Villageois / Loup</td><td class="no">👎 أعداء</td></tr>
+  <tr><td class="fr">Amoureux ↔ Amoureux</td><td class="yes">👍 نفس الكلان</td><td>الحبايب كلان وحدهم</td></tr>
+  <tr><td class="fr">Amoureux ↔ Villageois</td><td class="no">👎 أعداء</td><td rowspan="3">الحبايب كلان مستقلّ</td></tr>
+  <tr><td class="fr">Amoureux ↔ Loup</td><td class="no">👎 أعداء</td></tr>
+  <tr><td class="fr">Amoureux ↔ Alien</td><td class="no">👎 أعداء</td></tr>
+</table>
+<p class="note">🔸 <b>سؤال صغير:</b> كان الزوز حبايب <b>الزوز villageois</b> (موش مختلطين)، نحسبوهم برشة كلان وحدهم زادة؟ (الكلام متاعك يقول <b>إيه</b> — نثبّتوها هكّا كان ما قلتليش عكس.)</p>
+
+<h2><span class="n">6</span> ترتيب الليل</h2>
+<h3>🌙 الليلة الأولى برك</h3>
+<table>
+  <tr><th>#</th><th class="fr">Rôle</th><th>العمل</th></tr>
+  <tr><td>0</td><td><b>المعلّم</b></td><td>«الليل طاح على الحومة، الكل يغمّض عينيه... وممنوع الحسّ.»</td></tr>
+  <tr><td>1</td><td class="fr"><b>Voleur</b></td><td>يشوف الزوز كارطات اللي في الوسط وينجّم يبدّل — <b>قبل الكل</b></td></tr>
+  <tr><td>2</td><td class="fr">Cupidon</td><td>يختار الزوز حبايب → المعلّم يشدّهم في كتفهم</td></tr>
+  <tr><td>3</td><td class="fr">Les Amoureux</td><td>يفيقو ويتعارفو ويرجعو يرقدو</td></tr>
+  <tr><td>4</td><td class="fr">Enfant Sauvage</td><td>يختار المودال متاعو</td></tr>
+  <tr><td>5</td><td class="fr">Le Barbier · Alien</td><td>يتفاهمو مع المعلّم على الإشارة متاعهم</td></tr>
+</table>
+
+<h3>🌙 كل ليلة — بالترتيب هذا</h3>
+<table>
+  <tr><th>#</th><th class="fr">Rôle</th><th>العمل</th><th>ملاحظة</th></tr>
+  <tr><td>1</td><td class="fr">Ancien Sage</td><td>اتّجاه الكلمة لغدوة 🔁</td><td>كل ليلة</td></tr>
+  <tr><td>2</td><td class="fr">Voyante</td><td>تشوف دور واحد</td><td>كل ليلة</td></tr>
+  <tr><td>3</td><td class="fr">Renard</td><td>يشمّ واحد + جيرانو</td><td>يطيح كان ما لقاش ذيب</td></tr>
+  <tr><td>4</td><td class="fr">Détective</td><td>زوز أشخاص: نفس الكلان؟</td><td>كل ليلة</td></tr>
+  <tr><td>5</td><td class="fr">Salvateur</td><td>يحرس على واحد</td><td>موش نفس هدف البارح</td></tr>
+  <tr><td>6</td><td class="fr">Berger</td><td><b>يبعث خرفانو الكل</b></td><td>خروف لكل واحد · الخبر الصباح بالأعداد</td></tr>
+  <tr><td>7</td><td class="fr">Corbeau</td><td>+2 صوت على واحد</td><td>كل ليلة</td></tr>
+  <tr><td>8</td><td class="fr">Pyromane</td><td>يبلّل ولّا يحرق</td><td>كل ليلة</td></tr>
+  <tr><td>9</td><td class="fr">Loup Rouge</td><td><b>يبلوكي واحد</b></td><td>قبل الذيابة · موش نفس هدف البارح</td></tr>
+  <tr><td>10</td><td class="fr">Loups Garous</td><td>يختارو الضحيّة</td><td>كل ليلة</td></tr>
+  <tr><td>11</td><td class="fr">Grand Méchant Loup</td><td>ضحيّة ثانية</td><td>طول ما ما مات حتّى ذيب</td></tr>
+  <tr><td>12</td><td class="fr">Loup Père Infecte</td><td>يعدّي للضحيّة</td><td>من الليلة 2 · مرّة وحدة</td></tr>
+  <tr><td>13</td><td class="fr">Loup Noir</td><td>يسكّر فمّ واحد 🤐</td><td>كل ليلة · بالسكّات</td></tr>
+  <tr><td>14</td><td class="fr">Sorcière</td><td>تحيي / تقتل</td><td><b>آخر وحدة ديما</b></td></tr>
+  <tr><td>★</td><td class="fr">Barbier 🔫 · Alien</td><td>وقت ما يعملو الإشارة</td><td>بوتون عند المعلّم</td></tr>
+  <tr><td>★</td><td class="fr">Servante Dévouée</td><td>قبل كشف كارطة اللي طار بالڤوت</td><td>في النهار</td></tr>
+  <tr><td>★</td><td class="fr">Ours</td><td>إعلان الصباح 🐻</td><td>ما يفيقش</td></tr>
+</table>
+<p class="note"><b>ترتيب حساب الموت في الكود:</b><br>
+بلوكاج <code>Loup Rouge</code> → حماية <code>Salvateur</code> → عضّة <code>Loups</code> → عضّة <code>Grand Méchant Loup</code> → عدوى <code>Père Infecte</code> → شربة الحياة <code>Sorcière</code> → شربة الموت <code>Sorcière</code> → نار <code>Pyromane</code> → ضربة <code>Barbier</code>/<code>Alien</code> → تحوّل <code>Enfant Sauvage</code> (كان مات المودال) → موت الحبايب بالقهر → تثبّت في الربح.</p>
+
+<h2><span class="n">7</span> النهار</h2>
+<ol>
+  <li><b>الفيقة</b> — «صباح الخير يا جماعة... الحومة تفيق.»</li>
+  <li><b>إعلان الدبّ</b> 🐻 — «الدبّ يڤرڤر» ولّا «الدبّ ساكت».</li>
+  <li><b>إعلان الموتى</b> — جملة بالزهر: «الصباح لقاو <b>فلان</b> مرمي قدّام باب داره...» · «ريحة الإيسانس عمّرت الحومة و<b>فلان</b> ولّى رماد.» · «<b>الحومة باتت بلا ضحيّة</b>.»</li>
+  <li><b>قعدة الحومة</b> — الهدرة، و<b>الكلمة تدور</b> في الاتّجاه اللي اختارو Ancien Sage، والشرونومتر يدور.</li>
+  <li><b>رفع اليدّين</b> — الأپليكاسيون تحسب: +2 متاع Corbeau، وتمنع اللي سكّرو Loup Noir.</li>
+  <li><b>قبل الكشف</b> — المعلّم يسأل <b>La Servante Dévouée</b> (ديما، باش ما يبانش شيء).</li>
+  <li><b>الحكم</b> — «الحومة حكمت... <b>فلان</b>، عندك آخر كلمة.»</li>
+</ol>
+
+<h2><span class="n">8</span> القوانين التوانسة <span class="tag">بوتون يتشعل/يتطفى</span></h2>
+<table>
+  <tr><th>#</th><th>القانون</th><th>التفاصيل</th><th>الأصل</th></tr>
+  <tr><td>1</td><td><b>قانون القهوة</b></td><td>القعدة تدوم «قدّ ما تشرب قهوة»: 3 دقايق. «القهوة كملت، أرفعو يدّيكم».</td><td>مشعول</td></tr>
+  <tr><td>2</td><td><b>قانون النميمة</b></td><td>كل صباح نميمة صحيحة ولّا كذب بالزهر، باش تحرّك القعدة.</td><td>مشعول</td></tr>
+  <tr><td>3</td><td><b>قانون الحسّ</b></td><td>اللي يحكي في الليل يخسر صوتو غدوة. بوتون 🔇.</td><td>مشعول</td></tr>
+  <tr><td>4</td><td><b>قانون الزنڨة</b></td><td>تعادل → دقيقة دفاع → ڤوت ثاني → وكان عاود تعادل: حتّى حدّ ما يموت.</td><td>مشعول</td></tr>
+  <tr><td>5</td><td><b>قانون الحشومة</b></td><td>اللي مات ما عادش يحكي. ثاني مرّة → فريقو يخسر قوّة بالزهر.</td><td>مشعول</td></tr>
+  <tr><td>6</td><td><b>وضع رمضان 🌙</b></td><td>الليل «بعد الفطور»، الفيقة «السحور»، القعدة +دقيقتين.</td><td>مطفي</td></tr>
+  <tr><td>7</td><td><b>وضع السريع ⚡</b></td><td>بلا Sorcière، القعدة 90 ثانية.</td><td>مطفي</td></tr>
+</table>
+
+<h2><span class="n">9</span> التشكيلة حسب عدد اللعّابة</h2>
+<table>
+  <tr><th>العدد</th><th>ذيابة</th><th class="fr">Rôles</th></tr>
+  <tr><td><b>8</b></td><td>2</td><td class="fr">Loup Garou · Loup Rouge · Voyante · Salvateur · Sorcière · Villageois ×3</td></tr>
+  <tr><td><b>10</b></td><td>2</td><td class="fr">Loup Garou · Loup Rouge · Voyante · Salvateur · Sorcière · Détective · Ours · Villageois ×3</td></tr>
+  <tr><td><b>12</b></td><td>3</td><td class="fr">Loup Garou · Loup Rouge · Loup Noir · Voyante · Salvateur · Sorcière · Détective · Ours · Cupidon · Villageois ×3</td></tr>
+  <tr><td><b>15</b></td><td>4</td><td class="fr">+ Loup Père Infecte · Corbeau · Renard · Ancien Sage</td></tr>
+  <tr><td><b>18</b></td><td>5</td><td class="fr">+ Grand Méchant Loup · Barbier · Berger · Pyromane</td></tr>
+  <tr><td><b>22+</b></td><td>6</td><td class="fr">كل الأدوار + Alien · Enfant Sauvage · Servante Dévouée</td></tr>
+</table>
+<p class="note">
+  ⚠️ <b>قواعد التشكيلة اللي تحترمها الأپليكاسيون وحدها:</b><br>
+  • <b class="fr">Berger</b> ما يتحطّش كان ما فمّاش <b class="fr">Pyromane</b> (نتيجة «الخروف مبلول» تولّي مستحيلة).<br>
+  • <b class="fr">Grand Méchant Loup</b> ما ينفعش كان أقلّ من <b>15 لاعب</b> (ضحيّتين في الليلة = الطبقة تكمل بالزربة).<br>
+  • <b class="fr">Ours</b> و<b class="fr">Renard</b> و<b class="fr">Ancien Sage</b> يحتاجو <b>ترتيب القعدة</b> 🪑.<br>
+  • عدد الذيابة ≈ عدد اللعّابة ÷ 4.5 (مدوّر).
+</p>
+
+<h2><span class="n">10</span> شكون يربح</h2>
+<table>
+  <tr><th>الفريق</th><th>يربح وقتاش</th></tr>
+  <tr><td>🏘️ <b>الحومة</b></td><td>ما بقى حتّى ذيب ولا لاعب وحداني حيّ</td></tr>
+  <tr><td>🐺 <b>الذيابة</b></td><td>عدد الذيابة ≥ عدد الباقين</td></tr>
+  <tr><td>💔 <b>الحبايب</b></td><td>كان من فرقتين مختلفتين: ما بقاوش كان هوما الزوز</td></tr>
+  <tr><td>🔥 <b>Pyromane</b></td><td><b>يبقى وحدو حيّ</b> في الحومة (يحرق الكل)</td></tr>
+  <tr><td>👽 <b>Alien</b></td><td><b>يبقى وحدو حيّ</b> في الحومة</td></tr>
+</table>
+
+<h2><span class="n">11</span> واش لازم تعمل الأپليكاسيون</h2>
+<ul>
+  <li>أسامي اللعّابة + <b>ترتيب القعدة</b> 🪑 (ضروري لـ <span class="fr">Ours</span> · <span class="fr">Renard</span> · <span class="fr">Ancien Sage</span>).</li>
+  <li>تشكيلة أوتوماتيك + تبديل بيدك، مع احترام قواعد التشكيلة.</li>
+  <li><b>توزيع سرّي</b>: التيليفون يدور، كل واحد يشوف كارطتو.</li>
+  <li><b>محرّك الليل</b>: ينادي بالترتيب، يقوّل الكلام، ويمنع الحركات الغالطة (Salvateur نفس الهدف، Loup Rouge نفس الهدف، شربة مستعملة، خرفان كملو...).</li>
+  <li>بوتونات خاصّة: 💈 Barbier · 👽 Alien · 👵 Servante · 🔇 قانون الحسّ · 🤐 Loup Noir.</li>
+  <li>حساب أوتوماتيك للبلوكاج، الحماية، العدوى، النار، التحوّل، وموت الحبايب.</li>
+  <li>إعلان <b>الدبّ</b> 🐻 وحساب <b>Renard</b> من ترتيب القعدة.</li>
+  <li><b>كرّاس الحومة</b> + كشف نهائي للأدوار.</li>
+  <li>تخدم <b>بلا أنترنات</b>، الضوء ما يطفاش، خلفيّة كحلة.</li>
+</ul>
+
+<h2><span class="n">12</span> ✅ الأسئلة الكل تجاوبت</h2>
+<div class="new">
+  <b>ما بقى حتّى سؤال يعطّل.</b> الجدول هذا فيه القرارات الكل:
+  <table style="margin-top:10px">
+    <tr><th class="fr">Rôle</th><th>القرار</th></tr>
+    <tr><td class="fr">Loup Rouge</td><td>ما يبلوكيش نفس الواحد ليلتين ورا بعضهم · ينجّم يبلوكي ذيب</td></tr>
+    <tr><td class="fr">Loup Père Infecte</td><td>يعدّي مرّة وحدة في الطبقة</td></tr>
+    <tr><td class="fr">Loup Noir</td><td>المعلّم ما يعلنش الإسم — بالسكّات</td></tr>
+    <tr><td class="fr">Salvateur</td><td>ينجّم يحمي روحو · موش نفس الواحد ليلتين ورا بعضهم</td></tr>
+    <tr><td class="fr">Ancien Sage</td><td>زوز ضربات في ليالي متفرّقة</td></tr>
+    <tr><td class="fr">Détective</td><td>الوحدانيّة والحبايب أعداء للكلّ</td></tr>
+    <tr><td class="fr">Ours</td><td>الجيران الأحياء على اليمين واليسار</td></tr>
+    <tr><td class="fr">Corbeau</td><td>+2 صوت · من فريق الحومة</td></tr>
+    <tr><td class="fr">Berger</td><td>عدد الخرفان يحدّدو المعلّم · كي يكمّلهم يولّي Villageois</td></tr>
+    <tr><td class="fr">Barbier</td><td>مرّة وحدة · ينجّي كان قتل ذيب ولّا وحداني</td></tr>
+    <tr><td class="fr">Sorcière</td><td>كيف الرسمي: شربة حياة + شربة موت، كل وحدة مرّة</td></tr>
+    <tr><td class="fr">Pyromane</td><td>يربح وحدو · يبلّل (خرفان Berger − 1) كل ليلة</td></tr>
+    <tr><td class="fr">Alien</td><td>يربح وحدو · تخمينات بلا حدّ</td></tr>
+    <tr><td class="fr">Villageois</td><td>مزيد</td></tr>
+  </table>
+  <p style="margin-top:10px">🔸 بقى نقطة صغيرة وحدة برك: <b>عدد تخمينات Alien</b> — خلّيناها بلا حدّ. كان تحبّ نحدّدوها، قوللي.</p>
+</div>
+
+<h2><span class="n">13</span> 🎨 الثيم والتصاور</h2>
+<p>الثيم إسمو <b>« ليل الحومة »</b> وعندو <b>جلدتين</b> يتبدّلو وحدهم: <b>الليل</b> (كحل + ضوء الفانوس) و<b>النهار</b> (لون الرمل والطين). شوفو في الملفّ <code>theme/preview.html</code>.</p>
+<h3>من وين تجي تصويرة الدور — 4 طبقات</h3>
+<table>
+  <tr><th>#</th><th>المصدر</th><th>التفاصيل</th></tr>
+  <tr><td>1</td><td><b>تصويرة المستعمل</b> 📷</td><td>من الڤالري متاع التيليفون. تتصغّر وتتسجّل <b>في موارد الأپليكاسيون</b> وتفوت الكلّ.</td></tr>
+  <tr><td>2</td><td><b>رسم الأپليكاسيون</b> 🎨</td><td>تصاور مرسومة خصّيصًا، تجي مع الأپليكاسيون وتخدم بلا أنترنات.</td></tr>
+  <tr><td>3</td><td><b>مصدر خارجي</b> 🌐</td><td>الموقع الرسمي ولّا API — يتحمّل مرّة ويتخزّن.</td></tr>
+  <tr><td>4</td><td><b>احتياطي</b> 🔤</td><td>SVG يتصنع في اللحظة: إيموجي + لون الفريق. ما يفشل عمرو.</td></tr>
+</table>
+<p class="note">
+  ⚠️ <b>اللي لقيتو كي فتّشت على API رسميّة (8 نوفمبر 2026):</b><br>
+  • <code>loups-garous.com</code> (الموقع الرسمي، Zygomatic-Asmodée) خدّام، أما <b>ما فيه حتّى تصويرة دور</b> — كان تصاور الكراتين.<br>
+  • <code>loups-garous-en-ligne.com</code> يردّ <b>403</b> ويمنع الطلبات من برّا.<br>
+  • <code>api.werewolves-assistant.com</code> موجود أما يردّ <b>401</b> (يلزمو مفتاح).<br>
+  👈 <b>ما فمّاش API رسميّة عموميّة للتصاور.</b> زايد على هكّا، <b>8 أدوار متاعك ما عندهمش أصلاً كارطة رسميّة</b> (Loup Rouge · Loup Noir · Barbier · Détective · Berger · Pyromane · Alien · Ancien Sage).<br>
+  👈 الحلّ: نرسمو التصاور الكل بنفس الستيل، والـ <b>API يبقى جاهز</b> في <code>config/image-sources.json</code> — كان تلقى مصدر نهار من الأيّام، تشعلو ببوتون واحد.
+</p>
+
+<h3>✅ حالة التصاور</h3>
+<p>التصاور <b>كمّلو الكل</b> — <b>22 كارطة</b> مرسومة بنفس الستيل («ليل الحومة»: زيت، حومة تونسيّة بالليل، بيبان زرق مسمّرة، فوانيس حديد، ضوء عسلي على خلفيّة نيلة).</p>
+<table>
+  <tr><th>الملفّ</th><th>واش فيه</th></tr>
+  <tr><td><code>assets/roles/&lt;id&gt;.png</code></td><td>22 تصويرة 1024×1024 — كارطة لكل دور</td></tr>
+  <tr><td><code>assets/ui/card_back.png</code></td><td><b>ظهر الكارطة</b> — خاتم 8 رؤوس بالذهبي على نيلة. هذا اللي يشوفوه اللعّابة وقت ما يدور التيليفون في التوزيع السرّي</td></tr>
+  <tr><td><code>assets/ui/app_icon.png</code></td><td><b>أيقونة الأپليكاسيون</b> — ذيب على هلال عسلي فوق سطوح الحومة</td></tr>
+  <tr><td><code>assets/roles/gallery.html</code></td><td>بلانش كونتاكت — التصاور الكل في صفحة وحدة</td></tr>
+</table>
+
+<footer>LOUP GAROU BEL TOUNSI · كتيّب القوانين v1.3 · 22 دور · الثيم « ليل الحومة » · التصاور كاملة 🎨</footer>
+
+</div>
+</body>
+</html>

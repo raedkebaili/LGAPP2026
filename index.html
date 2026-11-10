@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-phase="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#0A0D16" />
+    <meta name="color-scheme" content="dark light" />
+    <title>LOUP GAROU BEL TOUNSI — لوب ڤارو بالتونسي</title>
+    <meta name="description" content="مساعد المعلّم للوب ڤارو بالتونسي — 22 دور، قوانين الحومة، يخدم بلا إنترنت." />
+
+    <!-- Installation sur l'écran d'accueil (iOS + Android) -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/assets/ui/icon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/ui/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="لوب ڤارو" />
+    <meta name="application-name" content="LOUP GAROU BEL TOUNSI" />
+
+    <!-- Évite le flash blanc au lancement -->
+    <style>
+      html, body { background: #0A0D16; }
+      #boot {
+        position: fixed; inset: 0; display: grid; place-items: center;
+        background: #0A0D16; z-index: 9999; transition: opacity .45s ease;
+        /* filet de sécurité CSS : s'efface tout seul même si le JS casse */
+        animation: bootbye .4s ease 3s forwards;
+      }
+      #boot.off { opacity: 0; pointer-events: none; }
+      @keyframes bootbye { to { opacity: 0; visibility: hidden; pointer-events: none } }
+      #boot svg { animation: bootspin 2.6s ease-in-out infinite; }
+      @keyframes bootspin { 0%,100% { transform: rotate(0) scale(1); opacity: .55 } 50% { transform: rotate(45deg) scale(1.08); opacity: 1 } }
+    </style>
+  </head>
+  <body>
+    <div id="boot">
+      <svg viewBox="0 0 48 48" width="74" height="74" fill="none" stroke="#E9B44C" stroke-width="1.8">
+        <rect x="10" y="10" width="28" height="28" />
+        <rect x="10" y="10" width="28" height="28" transform="rotate(45 24 24)" />
+        <circle cx="24" cy="24" r="4.5" />
+      </svg>
+    </div>
+    <div id="root"></div>
+
+    <!-- En développement : purge tout service worker laissé par un build,
+         sinon il resservirait les modules Vite depuis son cache. -->
+    <script type="module">
+      if (import.meta.env.DEV && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(async regs => {
+          if (!regs.length) return
+          await Promise.all(regs.map(r => r.unregister()))
+          if (window.caches) {
+            const keys = await caches.keys()
+            await Promise.all(keys.map(k => caches.delete(k)))
+          }
+          if (!sessionStorage.getItem('sw-purged')) {
+            sessionStorage.setItem('sw-purged', '1')
+            location.reload()
+          }
+        }).catch(() => {})
+      }
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

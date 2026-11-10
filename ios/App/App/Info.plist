@@ -45,11 +45,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>باش تدخل للروم متاع المعلّم اللي على نفس الواي فاي.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>نحتاجو الكاميرا باش تمسح كود الـ QR متاع الكارطة متاعك.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>باش تنجّم تختار تصويرة من الڤالري متاعك وتخلّيها تصويرة دور في اللعبة.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>باش نسجّلو التصاور اللي تختارها في موارد الأپليكاسيون.</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>باش تنجّم تعمل روم وتلعب مع اللي معاك على نفس الـ WiFi، بلا أنترنات.</string>
 </dict>
 </plist>

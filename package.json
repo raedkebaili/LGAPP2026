@@ -1,11 +1,10 @@
 {
   "name": "loup-garou-bel-tounsi",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n SRV,WEB -c magenta,cyan \"node server/index.mjs\" \"vite\"",
-    "server": "node server/index.mjs",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "sim": "esbuild scripts/sim.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=.sim.mjs --log-level=error && node .sim.mjs",
@@ -14,7 +13,8 @@
     "android": "npm run sync && npx cap open android",
     "ios": "npm run sync && npx cap open ios",
     "apk": "npm run sync && cd android && ./gradlew assembleDebug && echo '→ android/app/build/outputs/apk/debug/app-debug.apk'",
-    "apk:release": "npm run sync && cd android && ./gradlew assembleRelease"
+    "apk:release": "npm run sync && cd android && ./gradlew assembleRelease",
+    "test:lan": "node scripts/test-lan.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.6.0",
@@ -25,19 +25,19 @@
     "@capacitor/preferences": "^8.0.1",
     "@capacitor/splash-screen": "^8.0.2",
     "@capacitor/status-bar": "^8.0.4",
-    "express": "^4.21.2",
+    "jsqr": "^1.4.0",
+    "qrcode-generator": "^2.0.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "ws": "^8.18.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.6.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
-    "concurrently": "^9.1.2",
     "typescript": "^5.6.3",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "ws": "^8.18.0"
   },
   "engines": {
     "node": ">=22"

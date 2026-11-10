@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════
+   Polices embarquées — 100 % hors-ligne, aucun appel réseau.
+   Aref Ruqaa : calligraphie Ruq'ah, pour les titres.
+   Tajawal    : sans-serif arabe moderne, pour l'interface.
+   ═══════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Aref Ruqaa'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/fonts/arefruqaa-400-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Aref Ruqaa'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/fonts/arefruqaa-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2070-209F, U+20A0-20AB;
+}
+@font-face {
+  font-family: 'Aref Ruqaa'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('/fonts/arefruqaa-700-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Aref Ruqaa'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('/fonts/arefruqaa-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2070-209F, U+20A0-20AB;
+}
+
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/fonts/tajawal-400-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/fonts/tajawal-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+20A0-20AB;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('/fonts/tajawal-500-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('/fonts/tajawal-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+20A0-20AB;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('/fonts/tajawal-700-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('/fonts/tajawal-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+20A0-20AB;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 800; font-display: swap;
+  src: url('/fonts/tajawal-800-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: 'Tajawal'; font-style: normal; font-weight: 800; font-display: swap;
+  src: url('/fonts/tajawal-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+20A0-20AB;
+}

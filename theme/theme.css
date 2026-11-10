@@ -1,0 +1,181 @@
+/* ==========================================================================
+   LOUP GAROU BEL TOUNSI — Thème « ليل الحومة »
+   Deux peaux : [data-phase="night"] (défaut) et [data-phase="day"]
+   ========================================================================== */
+
+:root,
+[data-phase="night"] {
+  --bg: #0A0D16;
+  --bg-elevated: #111726;
+  --surface: #161D30;
+  --surface-2: #1D2639;
+  --border: #27314A;
+  --text: #EDEAE3;
+  --text-muted: #9AA0B8;
+  --primary: #E9B44C;
+  --primary-dim: #B8842F;
+  --accent: #D1603D;
+  --blue: #3E7CB1;
+  --success: #3FBF82;
+  --danger: #E0483B;
+  --overlay: rgba(5, 7, 14, .72);
+  --sky: radial-gradient(ellipse at 50% -10%, #1E1733 0%, #0A0D16 65%);
+}
+
+[data-phase="day"] {
+  --bg: #F6EFE0;
+  --bg-elevated: #FFFAF0;
+  --surface: #FFFFFF;
+  --surface-2: #FBF4E6;
+  --border: #E2D4B8;
+  --text: #241E14;
+  --text-muted: #7C6D55;
+  --primary: #C2881B;
+  --primary-dim: #9A6A12;
+  --accent: #BE4A26;
+  --blue: #2E6FB7;
+  --success: #2E9A66;
+  --danger: #C13A2E;
+  --overlay: rgba(36, 30, 20, .5);
+  --sky: radial-gradient(ellipse at 50% -10%, #FFF4DC 0%, #F6EFE0 65%);
+}
+
+/* --- Camps ---------------------------------------------------------------- */
+:root {
+  --camp-village: #3E7CB1;  --camp-village-bg: #14314D;  --camp-village-fg: #9CCBF5;
+  --camp-loups: #D1603D;    --camp-loups-bg: #44190F;    --camp-loups-fg: #FFAB87;
+  --camp-amoureux: #E4698F; --camp-amoureux-bg: #44131F; --camp-amoureux-fg: #FFA9C2;
+  --camp-solo: #A96BD9;     --camp-solo-bg: #2E1540;     --camp-solo-fg: #DCAAF5;
+
+  --font-ar-display: 'Aref Ruqaa', 'Amiri', 'Scheherazade New', serif;
+  --font-ar-ui: 'Tajawal', 'Cairo', 'Noto Kufi Arabic', 'Segoe UI', sans-serif;
+  --font-latin: 'Inter', 'Poppins', system-ui, sans-serif;
+
+  --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+  --sp-xs: 4px; --sp-sm: 8px; --sp-md: 14px; --sp-lg: 22px; --sp-xl: 34px;
+
+  --sh-card: 0 6px 24px rgba(0, 0, 0, .45);
+  --sh-glow: 0 0 28px rgba(233, 180, 76, .26);
+
+  --t-fast: 140ms; --t-normal: 260ms; --t-slow: 520ms;
+  --ease: cubic-bezier(.22, .9, .3, 1);
+}
+
+/* --- Base ----------------------------------------------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--bg);
+  background-image: var(--sky);
+  color: var(--text);
+  font-family: var(--font-ar-ui);
+  font-size: 17px;
+  line-height: 1.95;
+  direction: rtl;
+  transition: background-color var(--t-slow) var(--ease), color var(--t-slow) var(--ease);
+}
+
+.latin { direction: ltr; font-family: var(--font-latin); font-weight: 700; letter-spacing: .3px; }
+.display { font-family: var(--font-ar-display); line-height: 1.4; }
+
+/* Motif khatem (étoile à 8 branches) en filigrane */
+.khatem-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4l6 10 11-3-3 11 10 6-10 6 3 11-11-3-6 10-6-10-11 3 3-11-10-6 10-6-3-11 11 3z' fill='none' stroke='%23E9B44C' stroke-opacity='.07' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+/* --- Boutons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+  padding: 13px 22px; border-radius: var(--r-pill); border: 1px solid transparent;
+  font-family: var(--font-ar-ui); font-size: 17px; font-weight: 700;
+  cursor: pointer; transition: transform var(--t-fast) var(--ease), filter var(--t-fast);
+}
+.btn:active { transform: scale(.96); }
+.btn-primary { background: linear-gradient(180deg, var(--primary), var(--primary-dim)); color: #14100A; box-shadow: var(--sh-glow); }
+.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-lg { padding: 17px 30px; font-size: 19px; width: 100%; }
+
+/* --- Cartes --------------------------------------------------------------- */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: var(--sp-lg); box-shadow: var(--sh-card);
+}
+.card-camp-village { border-top: 4px solid var(--camp-village); }
+.card-camp-loups { border-top: 4px solid var(--camp-loups); }
+.card-camp-solo { border-top: 4px solid var(--camp-solo); }
+.card-camp-amoureux { border-top: 4px solid var(--camp-amoureux); }
+
+/* --- Carte de rôle (visuel du joueur) ------------------------------------- */
+.role-card {
+  position: relative; border-radius: var(--r-xl); overflow: hidden;
+  background: var(--surface-2); border: 1px solid var(--border); box-shadow: var(--sh-card);
+  aspect-ratio: 3 / 4; display: flex; flex-direction: column;
+}
+.role-card img { width: 100%; height: 72%; object-fit: cover; display: block; }
+.role-card .role-meta { padding: 12px 14px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.role-card .role-name { font-family: var(--font-latin); direction: ltr; font-size: 19px; font-weight: 800; color: var(--text); }
+.role-card .role-ar { font-size: 14px; color: var(--text-muted); }
+.role-card::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 45%, rgba(10, 13, 22, .85) 78%);
+}
+
+/* --- Badges camp ---------------------------------------------------------- */
+.badge { display: inline-block; font-size: 13px; padding: 3px 12px; border-radius: var(--r-pill); font-weight: 700; }
+.badge-village { background: var(--camp-village-bg); color: var(--camp-village-fg); }
+.badge-loups { background: var(--camp-loups-bg); color: var(--camp-loups-fg); }
+.badge-solo { background: var(--camp-solo-bg); color: var(--camp-solo-fg); }
+.badge-amoureux { background: var(--camp-amoureux-bg); color: var(--camp-amoureux-fg); }
+
+/* --- Pastille joueur ------------------------------------------------------ */
+.player {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
+  transition: all var(--t-fast) var(--ease);
+}
+.player.selected { border-color: var(--primary); box-shadow: var(--sh-glow); }
+.player.dead { opacity: .4; text-decoration: line-through; }
+.player .avatar {
+  width: 38px; height: 38px; border-radius: var(--r-pill); display: grid; place-items: center;
+  background: var(--surface-2); border: 1px solid var(--border); font-size: 18px;
+}
+.player .chips { margin-inline-start: auto; display: flex; gap: 5px; }
+.chip { font-size: 15px; }
+
+/* --- Boîte « كلام المعلّم » ------------------------------------------------ */
+.narrator-box {
+  background: linear-gradient(180deg, rgba(233, 180, 76, .10), rgba(233, 180, 76, .03));
+  border: 1px solid rgba(233, 180, 76, .3); border-inline-start: 4px solid var(--primary);
+  border-radius: var(--r-md); padding: 16px 18px;
+  font-family: var(--font-ar-display); font-size: 20px; line-height: 2.1; color: var(--text);
+}
+
+/* --- Minuteur « وقت القهوة » ---------------------------------------------- */
+.timer { font-family: var(--font-latin); font-size: 52px; font-weight: 800; letter-spacing: 2px; color: var(--primary); text-align: center; }
+.timer.warning { color: var(--accent); animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+
+/* --- Barre de vote -------------------------------------------------------- */
+.vote-bar { height: 9px; border-radius: var(--r-pill); background: var(--surface-2); overflow: hidden; }
+.vote-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+
+/* --- Bandeau de phase ----------------------------------------------------- */
+.phase-banner {
+  text-align: center; padding: 20px; border-radius: var(--r-lg);
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  font-family: var(--font-ar-display); font-size: 27px;
+}
+.phase-banner .ico { font-size: 38px; display: block; }
+
+/* --- Boutons permanents du narrateur -------------------------------------- */
+.hotbar { display: flex; gap: 10px; }
+.hot {
+  flex: 1; padding: 12px 6px; border-radius: var(--r-md); border: 1px dashed var(--border);
+  background: var(--surface); text-align: center; font-size: 13px; color: var(--text-muted); cursor: pointer;
+}
+.hot .ico { font-size: 23px; display: block; }
+.hot:active { border-color: var(--primary); color: var(--primary); }
+
+/* --- Accessibilité -------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

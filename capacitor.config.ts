@@ -5,7 +5,9 @@ const config: CapacitorConfig = {
   appName: 'Loup Garou bel Tounsi',
   webDir: 'dist',
   // 100 % hors-ligne : on embarque le bundle, aucun serveur distant
-  server: { androidScheme: 'https' },
+  // http://localhost reste un « contexte sécurisé » (caméra OK) mais permet
+  // les WebSocket ws:// vers le LAN, qu'un origin https:// bloquerait.
+  server: { androidScheme: 'http', iosScheme: 'capacitor', hostname: 'localhost', cleartext: true },
   android: { backgroundColor: '#0A0D16', allowMixedContent: true },
   ios: { backgroundColor: '#0A0D16', contentInset: 'always' },
   plugins: {

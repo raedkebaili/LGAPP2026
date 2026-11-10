@@ -1,0 +1,851 @@
+{
+  "schemaVersion": "1.3",
+  "game": {
+    "id": "loup-garou-bel-tounsi",
+    "titleFr": "LOUP GAROU BEL TOUNSI",
+    "titleAr": "لوب غارو بالتونسي",
+    "narratorAr": "المعلّم",
+    "minPlayers": 8,
+    "maxPlayers": 24
+  },
+  "camps": [
+    {
+      "id": "village",
+      "nameFr": "Village",
+      "nameAr": "الحومة",
+      "color": "#3E7CB1",
+      "emoji": "🏘️"
+    },
+    {
+      "id": "loups",
+      "nameFr": "Loups",
+      "nameAr": "الذيابة",
+      "color": "#D1603D",
+      "emoji": "🐺"
+    },
+    {
+      "id": "amoureux",
+      "nameFr": "Amoureux",
+      "nameAr": "الحبايب",
+      "color": "#E4698F",
+      "emoji": "💔"
+    },
+    {
+      "id": "solo",
+      "nameFr": "Solitaire",
+      "nameAr": "وحداني",
+      "color": "#A96BD9",
+      "emoji": "🔥"
+    }
+  ],
+  "roles": [
+    {
+      "id": "loup_garou",
+      "nameFr": "Loup Garou",
+      "emoji": "🐺",
+      "camp": "loups",
+      "isWolf": true,
+      "wake": "every_night",
+      "nightOrder": 190,
+      "count": {
+        "min": 1,
+        "max": 6
+      },
+      "descAr": "المعلّم يقيّمهم كل ليلة، وهوما يختارو شكون باش يقتلو.",
+      "mechAr": "كل ليلة يفيقو مع بعضهم، يتعارفو، ويتّفقو بالإشارة وبلا حسّ على ضحيّة وحدة. الذيب ما ياكلش ذيب.",
+      "sayAr": "الحومة الكل راقدة... الذيابة يفيقو. شوفو بعضكم، وأشّرو على اللي باش ياكلوه الليلة.",
+      "action": {
+        "type": "kill",
+        "targets": 1,
+        "collective": true
+      },
+      "constraints": [
+        "alive",
+        "not_wolf"
+      ]
+    },
+    {
+      "id": "loup_rouge",
+      "nameFr": "Loup Rouge",
+      "emoji": "🔴",
+      "camp": "loups",
+      "isWolf": true,
+      "wake": "every_night",
+      "nightOrder": 180,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "عندو الحقّ كل ليلة يقوم قبل الذيابة الآخرين، ويختار شكون يبلوكي — القوّة متاع هذاكة ما تخدمش الليلة.",
+      "mechAr": "ينجّم يبلوكي حتّى ذيب من صحابو. ما ينجّمش يبلوكي نفس اللاعب زوز ليالي ورا بعضهم. الأپليكاسيون تلغي العمل متاعو حتّى كان عملو قبل.",
+      "sayAr": "Le Loup Rouge يفيق وحدو قبل صحابو. شكون باش تبلوكي الليلة؟",
+      "action": {
+        "type": "roleblock",
+        "targets": 1
+      },
+      "constraints": [
+        "alive",
+        "not_same_as_previous_night"
+      ],
+      "canTargetWolf": true
+    },
+    {
+      "id": "loup_pere_infecte",
+      "nameFr": "Loup Père Infecte",
+      "emoji": "🧬",
+      "camp": "loups",
+      "isWolf": true,
+      "wake": "every_night",
+      "nightOrder": 210,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "startsAtNight": 2,
+      "uses": 1,
+      "descAr": "من الليلة الثانية يقوم وحدو بعد الذيابة، ويختار كان يعدّي للشخص اللي قتلوه الذيابة ولّا لا.",
+      "mechAr": "مرّة وحدة في الطبقة برك. كان عدّى: الضحيّة ما تموتش، تولّي ذيب وتحافظ على القوّة متاعها. ومن بعد ما يعدّي ما عادش يفيق وحدو.",
+      "sayAr": "Le Loup Père Infecte يفيق وحدو. هاذا هو اللي قتلتوه... تحبّ تعدّيلو؟",
+      "action": {
+        "type": "convert",
+        "targets": "wolves_victim"
+      }
+    },
+    {
+      "id": "loup_noir",
+      "nameFr": "Loup Noir",
+      "emoji": "⚫",
+      "camp": "loups",
+      "isWolf": true,
+      "wake": "every_night",
+      "nightOrder": 220,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "كل ليلة يختار شخص. الشخص هذاكة كي يجي الصباح ما عندوش الحقّ يتكلّم ولا يڤوتي — وكان تكلّم ولّا ڤوتى، يتحيّد من اللعبة.",
+      "mechAr": "المعلّم ما يعلنش الإسم — الحاجة سرّيّة بين المعلّم واللاعب. الأپليكاسيون تورّي 🤐 للمعلّم برك، وعندو بوتون «تكلّم ← خرج».",
+      "sayAr": "Le Loup Noir يفيق. شكون باش تسكّرلو فمّه غدوة؟",
+      "action": {
+        "type": "mute_and_novote",
+        "targets": 1,
+        "duration": "next_day"
+      },
+      "secretAnnouncement": true
+    },
+    {
+      "id": "grand_mechant_loup",
+      "nameFr": "Grand Méchant Loup",
+      "emoji": "🐺",
+      "camp": "loups",
+      "isWolf": true,
+      "wake": "every_night",
+      "nightOrder": 200,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "minPlayersRequired": 15,
+      "official": true,
+      "descAr": "ياكل مع الذيابة كيف الكل، وزيد يفيق وحدو مرّة ثانية ويقتل ضحيّة زايدة. أما القوّة تطيح منّو كيف يموت أيّ ذيب.",
+      "mechAr": "ضحيّة ثانية كل ليلة بشرط ما مات حتّى ذيب (حتّى Enfant Sauvage اللي ولّى ذيب). ما ينجّمش ياكل ذيب.",
+      "sayAr": "Le Grand Méchant Loup يفيق وحدو. شكون باش تاكل زادة الليلة؟",
+      "action": {
+        "type": "kill",
+        "targets": 1
+      },
+      "disabledWhen": "any_wolf_dead"
+    },
+    {
+      "id": "villageois",
+      "nameFr": "Villageois",
+      "emoji": "👳",
+      "camp": "village",
+      "wake": "never",
+      "nightOrder": null,
+      "count": {
+        "min": 0,
+        "max": 12
+      },
+      "descAr": "ما عندك حتّى قوّة. عندك كان لسانك وعقلك. أقعد، اسمع مليح، وشوف شكون اللي كلامو ما يمشيش.",
+      "mechAr": "بالليل ما يفيقش. بالنهار يحكي ويڤوتي كيف الكل.",
+      "sayAr": null
+    },
+    {
+      "id": "voyante",
+      "nameFr": "Voyante",
+      "emoji": "🔮",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 110,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "عندها الحقّ كل ليلة تختار شخص باش تعرف الدور متاعو.",
+      "mechAr": "المعلّم يوريها الكارطة بالضبط (موش برك ذيب ولّا لا).",
+      "sayAr": "La Voyante تفيق. شكون تحبّ تشوف الدور متاعو الليلة؟",
+      "action": {
+        "type": "reveal_role",
+        "targets": 1
+      },
+      "constraints": [
+        "alive",
+        "not_self"
+      ]
+    },
+    {
+      "id": "salvateur",
+      "nameFr": "Salvateur",
+      "emoji": "🛡️",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 140,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "يختار كل ليلة واحد يحميه من هجمة الذيابة.",
+      "mechAr": "ينجّم يحمي روحو. ما ينجّمش يحمي نفس الشخص زوز ليالي ورا بعضهم. ما يحميش من Pyromane ولا Barbier ولا Alien ولا Sorcière ولا حكم الحومة.",
+      "sayAr": "Le Salvateur يفيق. على شكون باش تحرس الليلة؟",
+      "action": {
+        "type": "protect",
+        "targets": 1
+      },
+      "constraints": [
+        "alive",
+        "not_same_as_previous_night"
+      ],
+      "canTargetSelf": true,
+      "protectsAgainst": [
+        "wolves",
+        "grand_mechant_loup"
+      ]
+    },
+    {
+      "id": "sorciere",
+      "nameFr": "Sorcière",
+      "emoji": "🧪",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 900,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "عندها شربة الحياة تحيي بيها اللي قتلوه الذيابة، وشربة الموت تقتل بيها شخص.",
+      "mechAr": "كل شربة تتستعمل مرّة وحدة في الطبقة، وتنجّم تستعمل الزوز في نفس الليلة. تنجّم تحيي روحها. تفيق آخر وحدة.",
+      "sayAr": "La Sorcière تفيق. هاذا هو اللي قتلوه الليلة... تحبّ تحيّيه؟ وتحبّ تقتل في حدّ؟",
+      "action": {
+        "type": "heal_or_poison",
+        "healUses": 1,
+        "poisonUses": 1,
+        "sameNightAllowed": true
+      },
+      "canHealSelf": true,
+      "alwaysLast": true
+    },
+    {
+      "id": "ancien_sage",
+      "nameFr": "Ancien Sage",
+      "emoji": "🧓",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 100,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "requiresSeating": true,
+      "descAr": "كبير القرية. يلزمو زوز ضربات من الذيابة باش يموت (ينجّمو يكونو في ليالي متفرّقة). وكان الحومة قتلوه بالڤوت، الكل يخسرو القوى متاعهم. والمعلّم يقيّمو كل ليلة باش يختار اتّجاه الكلمة تدور.",
+      "mechAr": "روحين ضدّ الذيابة، العدّاد يتعمّر حتّى في ليالي بعيدة على بعضها. مات بالڤوت ← كل أدوار الحومة تخسر قواها للآخر.",
+      "sayAr": "L'Ancien Sage يفيق. الكلمة غدوة تدور مع ولّا ضدّ عقارب الساعة؟",
+      "action": {
+        "type": "set_speech_direction",
+        "options": [
+          "horaire",
+          "anti_horaire"
+        ]
+      },
+      "lives": 2,
+      "onLynched": "village_loses_all_powers"
+    },
+    {
+      "id": "detective",
+      "nameFr": "Détective",
+      "emoji": "🕵️",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 130,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "يختار زوز أشخاص، والمعلّم يقوللو كان نفس الكلان ولّا زوز أعداء.",
+      "mechAr": "الجواب: 👍 نفس الكلان / 👎 أعداء. الحساب يتعمل من جدول الكلانات.",
+      "sayAr": "Le Détective يفيق. أشّر على زوز... نفس الكلان ولّا أعداء؟",
+      "action": {
+        "type": "compare_clans",
+        "targets": 2
+      }
+    },
+    {
+      "id": "ours",
+      "nameFr": "Ours",
+      "emoji": "🐻",
+      "camp": "village",
+      "wake": "never",
+      "nightOrder": null,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "requiresSeating": true,
+      "morningAnnouncement": true,
+      "descAr": "كل صباح: كان المعلّم قال الدبّ يڤرڤر، يعني واحد من الزوز القاعدين على يمينو ولّا على يسارو هو ذيب. وكان قال ما يڤرڤرش، الزوز villageois.",
+      "mechAr": "ما يفيقش. الإعلان قدّام الكل كل صباح. الجيران = أقرب لاعبين أحياء على اليمين واليسار.",
+      "sayAr": "صباح الخير... الدبّ يڤرڤر! / الدبّ ساكت الصباح هذا.",
+      "action": {
+        "type": "neighbors_wolf_check",
+        "scope": "alive_neighbors"
+      }
+    },
+    {
+      "id": "corbeau",
+      "nameFr": "Corbeau",
+      "emoji": "🐦‍⬛",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 160,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "كل ليلة يختار شكون يزيدلو أصوات في الڤوت.",
+      "mechAr": "+2 صوت ضدّ الهدف في ڤوت الصباح.",
+      "sayAr": "Le Corbeau يفيق. على شكون باش تحطّ الزوز أصوات؟",
+      "action": {
+        "type": "add_votes",
+        "targets": 1,
+        "amount": 2
+      }
+    },
+    {
+      "id": "berger",
+      "nameFr": "Berger",
+      "emoji": "🐑",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 150,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "requiresRole": "pyromane",
+      "descAr": "عندو قطيع خرفان — المعلّم هو اللي يحدّد العدد من البداية. كل ليلة يبعث <b>خرفانو الكل اللي باقيين</b>، خروف لكل واحد (ما ينجّمش يبعث زوز خرفان لنفس الشخص). وكي يكمّلو الخرفان الكل، يولّي Villageois عادي.",
+      "mechAr": "نتيجة كل خروف: ☠️ <b>مات</b> = الشخص ذيب · 💧 <b>رجع مبلول</b> = الشخص هو Pyromane ولّا واحد مبلول بالإيسانس · ✅ <b>رجع بخير</b> = لا ذيب لا مبلول.\nالصباح المعلّم يعلن <b>الأعداد برك</b> قدّام الحومة الكل، بلا أسماء. الـ Berger وحدو يعرف وين بعث خرفانو — منها يستنتج، وينجّم يحكي ولّا يكذب في قعدة الحومة.\n☠️ الخروف الميّت <b>يتشطب للآخر</b>. 💧 المبلول يرجع ويتبعث مرّة أخرى، أما يبقى مبلول — وكان الـ Pyromane شعّل النار، يحرق معا الناس المبلولين.",
+      "sayAr": "Le Berger يفيق. باقيلك {sheepLeft} خرفان — لعند شكون تبعثهم الليلة؟",
+      "action": {
+        "type": "scout_herd",
+        "targets": "all_remaining_sheep",
+        "mandatoryAll": true,
+        "oneSheepPerPlayer": true,
+        "canTargetSelf": false,
+        "resultKinds": [
+          "dead_sheep",
+          "wet_sheep",
+          "safe_sheep"
+        ]
+      },
+      "setupParam": {
+        "id": "sheepCount",
+        "labelAr": "عدد الخرفان",
+        "default": 3,
+        "min": 2,
+        "max": 6,
+        "setBy": "narrator"
+      },
+      "report": {
+        "when": "morning",
+        "visibility": "public_anonymous",
+        "revealsTargets": false,
+        "format": "counts_only",
+        "templateAr": "خبر الرعيان: ☠️ {dead} خروف ماتو · 💧 {wet} رجعو مبلولين · ✅ {safe} رجعو بخير.",
+        "noteAr": "المعلّم ما يسمّيش شكون زارو الخرفان. الـ Berger برك يعرف الأهداف اللي اختارهم."
+      },
+      "sheep": {
+        "deadIsLost": true,
+        "wetIsReusable": true,
+        "wetStaysWet": true,
+        "burnsWithPyromane": true,
+        "wetCauses": [
+          "target_is_pyromane",
+          "target_was_doused_by_pyromane"
+        ]
+      },
+      "onZeroSheep": "becomes_villageois"
+    },
+    {
+      "id": "barbier",
+      "nameFr": "Barbier",
+      "emoji": "🔫",
+      "camp": "village",
+      "wake": "on_demand",
+      "nightOrder": null,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "uses": 1,
+      "descAr": "راجل بلحية، عندو <b>فوسي وطلقة وحدة برك</b> في الطبقة الكل. يتفاهم مع المعلّم على <b>إشارة</b>. كيف يعملها، المعلّم يرقّد الناس الكل، يقيّمو وحدو، ويختار شكون يضرب.",
+      "mechAr": "🐺 ضرب <b>ذيب</b> ← يعيش. 🔥 ضرب <b>joueur solo</b> (Pyromane / Alien) ← يعيش زادة. 🏘️ ضرب <b>villageois</b> ← <b>يموت معاه</b> (الطلقة طاحت في غير بلاصتها).\n<b>طلقة وحدة برك في الطبقة.</b> دور مفعّل باليد: بوتون 🔫 عند المعلّم، ينجّم يضغطو في أي وقت.",
+      "sayAr": "الكل يغمّض عينيه... Le Barbier يفيق. عندك طلقة وحدة — على شكون باش تطلق؟",
+      "action": {
+        "type": "duel_kill",
+        "targets": 1,
+        "survivesIfTargetCampIn": [
+          "loups",
+          "solo"
+        ]
+      },
+      "narratorButton": {
+        "emoji": "🔫",
+        "labelAr": "Le Barbier عمل الإشارة"
+      },
+      "weapon": {
+        "kindAr": "فوسي",
+        "bullets": 1,
+        "emoji": "🔫"
+      }
+    },
+    {
+      "id": "voleur",
+      "nameFr": "Voleur",
+      "emoji": "🃏",
+      "camp": "variable",
+      "campStart": "village",
+      "wake": "first_night",
+      "nightOrder": 5,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "official": true,
+      "descAr": "الليلة الأولى برك، و<b>قبل الكل</b>. في وسط الطاولة فمّا <b>زوز كارطات مقلوبين</b> ما تقسموش — الـ Voleur يشوفهم، وينجّم <b>يبدّل الكارطة متاعو</b> بوحدة منهم.",
+      "mechAr": "🐺 كان <b>الزوز كارطات ذيابة</b> ← <b>مجبور</b> ياخذ وحدة منهم ويولّي ذيب.\n🔀 كان لا، حرّ: يبدّل ولّا يخلّي كارطتو.\nكيف يبدّل، <b>يلعب بالدور الجديد للآخر</b>، والفرقة متاعو تولّي فرقة الكارطة الجديدة. وكان الدور الجديد يخدم في الليلة الأولى (Cupidon · Enfant Sauvage) ← يلعبو في <b>نفس الليلة</b>، بعد ما يبدّل.\n🙂 كان خلّى كارطة Voleur ← يولّي <b>Villageois عادي</b> بلا قوّة.",
+      "sayAr": "Le Voleur يفيق. هاك الزوز كارطات اللي في الوسط... تحبّ تبدّل، ولّا تخلّي كارطتك؟",
+      "action": {
+        "type": "swap_with_center",
+        "centerCards": 2,
+        "forcedIfAllWolves": true,
+        "mayDecline": true
+      },
+      "setupEffect": {
+        "extraCenterCards": 2,
+        "extraCardRole": "villageois",
+        "noteAr": "كان لعبنا بالـ Voleur، زيد <b>زوز كارطات Villageois</b> زيادة في الباكي. بعد التوزيع، الزوز كارطات اللي فضلو يتحطّو مقلوبين في وسط الطاولة."
+      },
+      "keepsNewRoleForever": true,
+      "ifKeepsOwnCard": "villageois"
+    },
+    {
+      "id": "cupidon",
+      "nameFr": "Cupidon",
+      "emoji": "💘",
+      "camp": "village",
+      "wake": "first_night",
+      "nightOrder": 10,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "official": true,
+      "descAr": "الليلة الأولى برك، يأشّر على زوز لعّابة ويخلّيهم حبايب (ينجّم يختار روحو). كان مات واحد فيهم، الآخر يموت بالقهر في نفس اللحظة.",
+      "mechAr": "المعلّم يشدّهم في كتفهم بالسكّات، ومن بعد الحبايب يفيقو ويتعارفو. كان الزوز من فرقتين مختلفتين، يولّيو فريق ثالث ولازمهم يبقاو هوما الزوز. الحبيب ما يڤوتيش ضدّ حبيبو.",
+      "sayAr": "Cupidon يفيق ويختار زوز حبايب... توّا الحبايب يفيقو ويتعارفو، ويرجعو يرقدو.",
+      "action": {
+        "type": "make_lovers",
+        "targets": 2
+      },
+      "canTargetSelf": true
+    },
+    {
+      "id": "enfant_sauvage",
+      "nameFr": "Enfant Sauvage",
+      "emoji": "🐾",
+      "camp": "village",
+      "wake": "first_night",
+      "nightOrder": 20,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "official": true,
+      "descAr": "كبر في الغابة مع الذيابة. الليلة الأولى يختار «المودال» متاعو. طول ما المودال حيّ هو villageois عادي، وكيف يموت المودال يولّي Loup Garou للآخر.",
+      "mechAr": "الأپليكاسيون تبدّل الفريق وحدها كيف يموت المودال. كي يولّي ذيب ويموت، Grand Méchant Loup يخسر القوّة متاعو زادة.",
+      "sayAr": "L'Enfant Sauvage يفيق ويختار المودال متاعو.",
+      "action": {
+        "type": "pick_model",
+        "targets": 1
+      },
+      "becomesWolfWhen": "model_dead"
+    },
+    {
+      "id": "servante_devouee",
+      "nameFr": "Servante Dévouée",
+      "emoji": "👵",
+      "camp": "village",
+      "wake": "on_demand",
+      "nightOrder": null,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "official": true,
+      "descAr": "قبل ما يتكشف دور اللي حكمت عليه الحومة بالڤوت، تنجّم تكشف روحها وتاخذ الكارطة متاعو.",
+      "mechAr": "تخسر كارطتها وتولّي تلعب الدور متاعو للآخر، والقوى يرجعو جداد. كان هي حبيبة ما تنجّمش تستعمل القوّة — أما المعلّم يسألها ديما باش ما يبانش شيء.",
+      "sayAr": "قبل ما نكشفو الكارطة... La Servante Dévouée، تحبّ تاخذ بلاصتو؟",
+      "action": {
+        "type": "swap_with_dead",
+        "trigger": "before_lynch_reveal"
+      },
+      "disabledIfLover": true,
+      "narratorButton": {
+        "emoji": "👵",
+        "labelAr": "La Servante تبدّل"
+      }
+    },
+    {
+      "id": "renard",
+      "nameFr": "Renard",
+      "emoji": "🦊",
+      "camp": "village",
+      "wake": "every_night",
+      "nightOrder": 120,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "official": true,
+      "requiresSeating": true,
+      "descAr": "كل ليلة يأشّر على لاعب، والمعلّم يشوف هو وجارو اليمين وجارو اليسار.",
+      "mechAr": "👍 فمّا ذيب في الـ3 ← يحافظ على القوّة ويعاود. 👎 ما فمّاش ذيب ← يخسر القوّة للآخر، أما برّأ 3 ناس. ينجّم ما يشمّش في ليلة ويعاود في اللي بعدها.",
+      "sayAr": "Le Renard يفيق. تحبّ تشمّ الليلة؟ أشّر على واحد — ونشوفو هو وجيرانو.",
+      "action": {
+        "type": "sniff_trio",
+        "targets": 1,
+        "scope": "alive_neighbors"
+      },
+      "losesPowerOnFail": true,
+      "optional": true
+    },
+    {
+      "id": "pyromane",
+      "nameFr": "Pyromane",
+      "emoji": "🔥",
+      "camp": "solo",
+      "wake": "every_night",
+      "nightOrder": 170,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "كل ليلة يختار: يبلّل ناس بالإيسانس، ولّا يشعل النار في اللي بلّلهم قبل.",
+      "mechAr": "عمل واحد في الليلة: 💧 يبلّل ولّا 🔥 يحرق. وقت ما يحرق، المبلولين الكل يموتو دفعة وحدة. Le Salvateur ما يحميش من النار.",
+      "sayAr": "Le Pyromane يفيق. تحبّ تبلّل في حدّ، ولّا تشعل النار؟",
+      "action": {
+        "type": "douse_or_burn",
+        "dousePerNightFormula": "berger.sheepCount - 1",
+        "dousePerNightDefault": 2
+      },
+      "winCondition": "last_alive"
+    },
+    {
+      "id": "alien",
+      "nameFr": "Alien",
+      "emoji": "👽",
+      "camp": "solo",
+      "wake": "on_demand",
+      "nightOrder": null,
+      "count": {
+        "min": 0,
+        "max": 1
+      },
+      "descAr": "يتفاهم مع المعلّم على إشارة. وقت ما يحبّ يعطيها، المعلّم يرقّد القرية ويقيّمو، وهو يسمّي دور متاع شخص.",
+      "mechAr": "🎯 صاب ← هو يعيش والشخص يموت. ❌ غلط ← هو اللي يموت. عدوّ للكلّ: للحومة وللذيابة وللـ Pyromane وللحبايب.",
+      "sayAr": "الكل يغمّض... Alien يفيق. شكون؟ وشنوّة الدور متاعو؟",
+      "action": {
+        "type": "guess_role",
+        "targets": 1,
+        "onCorrect": "target_dies",
+        "onWrong": "self_dies"
+      },
+      "winCondition": "last_alive",
+      "narratorButton": {
+        "emoji": "👽",
+        "labelAr": "Alien عمل الإشارة"
+      }
+    }
+  ],
+  "firstNightOrder": [
+    "voleur",
+    "__thief_swap__",
+    "cupidon",
+    "__lovers_recognize__",
+    "enfant_sauvage",
+    "__secret_signs__"
+  ],
+  "deathResolutionOrder": [
+    "loup_rouge_block",
+    "salvateur_protection",
+    "wolves_kill",
+    "grand_mechant_loup_kill",
+    "pere_infecte_convert",
+    "sorciere_heal",
+    "sorciere_poison",
+    "pyromane_burn",
+    "berger_wet_sheep_burn",
+    "barbier_or_alien_strike",
+    "enfant_sauvage_transform",
+    "lovers_chain_death",
+    "check_victory"
+  ],
+  "detectiveClanMatrix": {
+    "note": "Réponse du narrateur : true = نفس الكلان / false = أعداء",
+    "clanOf": {
+      "village": "village",
+      "loups": "loups",
+      "pyromane": "solo_pyromane",
+      "alien": "solo_alien",
+      "amoureux": "amoureux"
+    },
+    "rules": [
+      {
+        "a": "village",
+        "b": "village",
+        "sameClan": true
+      },
+      {
+        "a": "loups",
+        "b": "loups",
+        "sameClan": true
+      },
+      {
+        "a": "amoureux",
+        "b": "amoureux",
+        "sameClan": true
+      },
+      {
+        "a": "village",
+        "b": "loups",
+        "sameClan": false
+      },
+      {
+        "a": "solo_*",
+        "b": "*",
+        "sameClan": false
+      },
+      {
+        "a": "amoureux",
+        "b": "*",
+        "sameClan": false
+      }
+    ]
+  },
+  "winConditions": [
+    {
+      "camp": "village",
+      "rule": "no_wolf_alive AND no_solo_alive"
+    },
+    {
+      "camp": "loups",
+      "rule": "wolves_alive >= others_alive"
+    },
+    {
+      "camp": "amoureux",
+      "rule": "mixed_couple AND only_lovers_alive"
+    },
+    {
+      "camp": "solo",
+      "role": "pyromane",
+      "rule": "last_alive"
+    },
+    {
+      "camp": "solo",
+      "role": "alien",
+      "rule": "last_alive"
+    }
+  ],
+  "houseRules": [
+    {
+      "id": "gahwa",
+      "nameAr": "قانون القهوة",
+      "descAr": "القعدة تدوم قدّ ما تشرب قهوة: 3 دقايق.",
+      "default": true,
+      "param": {
+        "minutes": 3
+      }
+    },
+    {
+      "id": "nmima",
+      "nameAr": "قانون النميمة",
+      "descAr": "كل صباح نميمة صحيحة ولّا كذب بالزهر.",
+      "default": true
+    },
+    {
+      "id": "hess",
+      "nameAr": "قانون الحسّ",
+      "descAr": "اللي يحكي في الليل يخسر صوتو غدوة.",
+      "default": true
+    },
+    {
+      "id": "zenga",
+      "nameAr": "قانون الزنڨة",
+      "descAr": "تعادل ← دفاع دقيقة ← ڤوت ثاني ← وإلّا حتّى حدّ ما يموت.",
+      "default": true
+    },
+    {
+      "id": "7echma",
+      "nameAr": "قانون الحشومة",
+      "descAr": "اللي مات ما عادش يحكي.",
+      "default": true
+    },
+    {
+      "id": "ramadan",
+      "nameAr": "وضع رمضان",
+      "descAr": "الليل «بعد الفطور»، الفيقة «السحور»، القعدة +دقيقتين.",
+      "default": false
+    },
+    {
+      "id": "sari3",
+      "nameAr": "وضع السريع",
+      "descAr": "بلا Sorcière، القعدة 90 ثانية.",
+      "default": false
+    }
+  ],
+  "compositionRules": [
+    "berger نحطّوه كان كان Pyromane في اللعبة",
+    "grand_mechant_loup يلزم 15 لاعب على الأقلّ",
+    "ours / renard / ancien_sage يلزمهم ترتيب القعدة",
+    "عدد الذيابة ≈ round(nbJoueurs / 4.5)",
+    "voleur: زيد زوز كارطات Villageois زيادة — يتحطّو مقلوبين في وسط الطاولة",
+    "berger: يبعث خرفانو الكل كل ليلة — خروف لكل شخص، والخبر الصباح بالأعداد برك"
+  ],
+  "compositions": [
+    {
+      "players": 8,
+      "roles": [
+        "loup_garou",
+        "loup_rouge",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "villageois",
+        "villageois",
+        "villageois"
+      ]
+    },
+    {
+      "players": 10,
+      "roles": [
+        "loup_garou",
+        "loup_rouge",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "detective",
+        "ours",
+        "villageois",
+        "villageois",
+        "villageois"
+      ]
+    },
+    {
+      "players": 12,
+      "roles": [
+        "loup_garou",
+        "loup_rouge",
+        "loup_noir",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "detective",
+        "ours",
+        "cupidon",
+        "villageois",
+        "villageois",
+        "villageois"
+      ]
+    },
+    {
+      "players": 15,
+      "roles": [
+        "loup_garou",
+        "loup_rouge",
+        "loup_noir",
+        "loup_pere_infecte",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "detective",
+        "ours",
+        "corbeau",
+        "renard",
+        "ancien_sage",
+        "villageois",
+        "villageois",
+        "villageois"
+      ]
+    },
+    {
+      "players": 18,
+      "roles": [
+        "loup_garou",
+        "loup_garou",
+        "loup_rouge",
+        "loup_noir",
+        "loup_pere_infecte",
+        "grand_mechant_loup",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "detective",
+        "ours",
+        "corbeau",
+        "renard",
+        "ancien_sage",
+        "barbier",
+        "berger",
+        "pyromane",
+        "villageois"
+      ]
+    },
+    {
+      "players": 22,
+      "roles": [
+        "loup_garou",
+        "loup_garou",
+        "loup_rouge",
+        "loup_noir",
+        "loup_pere_infecte",
+        "grand_mechant_loup",
+        "voyante",
+        "salvateur",
+        "sorciere",
+        "detective",
+        "ours",
+        "corbeau",
+        "renard",
+        "ancien_sage",
+        "barbier",
+        "berger",
+        "cupidon",
+        "enfant_sauvage",
+        "servante_devouee",
+        "pyromane",
+        "alien",
+        "villageois"
+      ]
+    }
+  ]
+}

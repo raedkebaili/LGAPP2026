@@ -1,0 +1,124 @@
+{
+  "checkedAt": "2026-11-08T18:34:09.681Z",
+  "found": [],
+  "missing": [
+    {
+      "id": "loup_rouge",
+      "nameFr": "Loup Rouge",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "loup_pere_infecte",
+      "nameFr": "Loup Père Infecte",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "loup_noir",
+      "nameFr": "Loup Noir",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "grand_mechant_loup",
+      "nameFr": "Grand Méchant Loup",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "villageois",
+      "nameFr": "Villageois",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "salvateur",
+      "nameFr": "Salvateur",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "sorciere",
+      "nameFr": "Sorcière",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "ancien_sage",
+      "nameFr": "Ancien Sage",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "detective",
+      "nameFr": "Détective",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "ours",
+      "nameFr": "Ours",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "corbeau",
+      "nameFr": "Corbeau",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "berger",
+      "nameFr": "Berger",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "barbier",
+      "nameFr": "Barbier",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    },
+    {
+      "id": "cupidon",
+      "nameFr": "Cupidon",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "enfant_sauvage",
+      "nameFr": "Enfant Sauvage",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "servante_devouee",
+      "nameFr": "Servante Dévouée",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "renard",
+      "nameFr": "Renard",
+      "reason": "aucune source ne répond"
+    },
+    {
+      "id": "alien",
+      "nameFr": "Alien",
+      "reason": "rôle fan-made — aucun équivalent officiel"
+    }
+  ],
+  "alreadyLocal": [
+    "loup_garou",
+    "voyante",
+    "pyromane"
+  ],
+  "providers": [
+    {
+      "id": "official_zygomatic",
+      "label": "Site officiel (loups-garous.com / Zygomatic-Asmodée)",
+      "enabled": false,
+      "status": "désactivé",
+      "note": "AUCUNE image par rôle trouvée (uniquement des visuels de boîtes). Art sous copyright Alexios Tjoyas / éditions Lui-même : usage interne uniquement, jamais dans une build publiée."
+    },
+    {
+      "id": "werewolves_assistant_api",
+      "label": "Werewolves Assistant API",
+      "enabled": false,
+      "status": "désactivé",
+      "note": "Répond 401 Unauthorized sans clé. Docs Swagger publiques sur /docs."
+    },
+    {
+      "id": "custom",
+      "label": "Source personnalisée (à toi)",
+      "enabled": false,
+      "status": "désactivé",
+      "note": "À remplir si tu trouves/héberges une banque d'images."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "_comment": "Configuration des fournisseurs d'images de rôles. Testé le 2026-11-08 : aucune API officielle publique ne sert d'images par rôle. Les adaptateurs restent prêts si une source devient disponible — il suffit d'activer 'enabled'.",
+
+  "cascade": ["user", "pack", "remote", "placeholder"],
+
+  "providers": [
+    {
+      "id": "official_zygomatic",
+      "label": "Site officiel (loups-garous.com / Zygomatic-Asmodée)",
+      "enabled": false,
+      "baseUrl": "https://cdn.svc.asmodee.net/production-zygomatic/uploads/image-converter/",
+      "strategy": "scrape",
+      "indexUrl": "https://www.loups-garous.com/",
+      "status": "AUCUNE image par rôle trouvée (uniquement des visuels de boîtes). Art sous copyright Alexios Tjoyas / éditions Lui-même : usage interne uniquement, jamais dans une build publiée.",
+      "verifiedOn": "2026-11-08"
+    },
+    {
+      "id": "werewolves_assistant_api",
+      "label": "Werewolves Assistant API",
+      "enabled": false,
+      "baseUrl": "https://api.werewolves-assistant.com",
+      "rolesEndpoint": "/roles",
+      "strategy": "json",
+      "auth": { "type": "bearer", "envVar": "WA_API_TOKEN" },
+      "status": "Répond 401 Unauthorized sans clé. Docs Swagger publiques sur /docs.",
+      "verifiedOn": "2026-11-08"
+    },
+    {
+      "id": "custom",
+      "label": "Source personnalisée (à toi)",
+      "enabled": false,
+      "baseUrl": "",
+      "pattern": "{baseUrl}/{roleId}.png",
+      "strategy": "pattern",
+      "status": "À remplir si tu trouves/héberges une banque d'images."
+    }
+  ],
+
+  "roleAliases": {
+    "loup_garou": ["werewolf", "loup-garou", "loup_garou"],
+    "voyante": ["seer", "voyante"],
+    "sorciere": ["witch", "sorciere", "sorcière"],
+    "salvateur": ["guard", "defender", "salvateur"],
+    "cupidon": ["cupid", "cupidon"],
+    "renard": ["fox", "renard"],
+    "enfant_sauvage": ["wild-child", "enfant-sauvage"],
+    "servante_devouee": ["scapegoat-servant", "devoted-servant", "servante-devouee"],
+    "grand_mechant_loup": ["big-bad-wolf", "grand-mechant-loup"],
+    "loup_pere_infecte": ["vile-father-of-wolves", "infect-pere-des-loups"],
+    "corbeau": ["raven", "corbeau"],
+    "ours": ["bear-tamer", "montreur-ours", "ours"],
+    "villageois": ["villager", "villageois"]
+  },
+
+  "noOfficialEquivalent": [
+    "loup_rouge", "loup_noir", "barbier", "detective", "berger", "pyromane", "alien", "ancien_sage"
+  ],
+
+  "generation": {
+    "styleKey": "medina-night-oil-painting",
+    "stylePrompt": "Square card illustration for a Tunisian social deduction game. Setting: a Tunisian medina at night — whitewashed walls, blue studded wooden doors, arched alleyways, wrought-iron lanterns. Palette: deep indigo night blues, warm amber lantern glow, terracotta accents. Style: rich digital oil painting, dramatic chiaroscuro, painterly brush texture, subtle film grain, mysterious North African folk-tale atmosphere, centered waist-up composition, strong silhouette, soft vignette. No text, no lettering, no watermark, no frame or border.",
+    "outputDir": "assets/roles",
+    "format": "png",
+    "size": "1024x1024"
+  },
+
+  "userOverride": {
+    "enabled": true,
+    "labelAr": "بدّل تصويرة الدور",
+    "storageDir": "roles-custom",
+    "maxSizeKb": 900,
+    "resizeTo": 768,
+    "acceptedTypes": ["image/jpeg", "image/png", "image/webp"]
+  }
+}

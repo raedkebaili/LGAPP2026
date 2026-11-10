@@ -1,0 +1,131 @@
+# ═══════════════════════════════════════════════════════════════
+#  Construit l'IPA iOS sur un Mac loué à GitHub — tu n'as pas
+#  besoin de Mac. Lance-le à la main : onglet Actions → iOS → Run.
+#
+#  Sans secrets  → IPA NON SIGNÉE (pour inspection / sideload avec
+#                  Sideloadly ou AltStore depuis Windows).
+#  Avec secrets  → IPA signée + envoi TestFlight (compte Apple 99 $/an).
+# ═══════════════════════════════════════════════════════════════
+name: iOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      signed:
+        description: "Signer et envoyer sur TestFlight (nécessite les secrets)"
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Dépendances
+        run: npm ci
+
+      - name: Build web + sync Capacitor
+        run: |
+          npm run build
+          npx cap sync ios
+
+      - name: Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app || true
+
+      # ─────────── Chemin A : non signée (zéro secret) ───────────
+      - name: Archive sans signature
+        if: ${{ inputs.signed == false }}
+        working-directory: ios/App
+        run: |
+          xcodebuild -workspace App.xcworkspace -scheme App \
+            -configuration Release -sdk iphoneos \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO archive
+
+      - name: Emballer l'IPA non signée
+        if: ${{ inputs.signed == false }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/Payload"
+          cp -R "$RUNNER_TEMP/App.xcarchive/Products/Applications/App.app" "$RUNNER_TEMP/Payload/"
+          cd "$RUNNER_TEMP" && zip -qry LoupGarouBelTounsi-unsigned.ipa Payload
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          mv "$RUNNER_TEMP/LoupGarouBelTounsi-unsigned.ipa" "$GITHUB_WORKSPACE/out/"
+
+      # ─────────── Chemin B : signée + TestFlight ───────────
+      - name: Trousseau de signature
+        if: ${{ inputs.signed == true }}
+        env:
+          CERT_P12: ${{ secrets.IOS_CERT_P12 }}
+          CERT_PASSWORD: ${{ secrets.IOS_CERT_PASSWORD }}
+          PROFILE: ${{ secrets.IOS_PROVISIONING_PROFILE }}
+        run: |
+          echo "$CERT_P12" | base64 --decode > /tmp/cert.p12
+          echo "$PROFILE"  | base64 --decode > /tmp/profile.mobileprovision
+          security create-keychain -p ci build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p ci build.keychain
+          security set-keychain-settings -t 3600 -u build.keychain
+          security import /tmp/cert.p12 -k build.keychain -P "$CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k ci build.keychain
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp /tmp/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      - name: Archive signée
+        if: ${{ inputs.signed == true }}
+        working-directory: ios/App
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcodebuild -workspace App.xcworkspace -scheme App \
+            -configuration Release -sdk iphoneos \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
+            -allowProvisioningUpdates archive
+
+      - name: Exporter l'IPA
+        if: ${{ inputs.signed == true }}
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          cat > /tmp/ExportOptions.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>${TEAM_ID}</string>
+            <key>uploadSymbols</key><true/>
+            <key>signingStyle</key><string>automatic</string>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportOptionsPlist /tmp/ExportOptions.plist \
+            -exportPath "$GITHUB_WORKSPACE/out" \
+            -allowProvisioningUpdates
+
+      - name: Envoyer sur TestFlight
+        if: ${{ inputs.signed == true }}
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          mkdir -p ~/private_keys
+          echo "$ASC_KEY_P8" | base64 --decode > ~/private_keys/AuthKey_${ASC_KEY_ID}.p8
+          xcrun altool --upload-app -f out/*.ipa -t ios \
+            --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios-ipa
+          path: out/*.ipa
+          retention-days: 30
