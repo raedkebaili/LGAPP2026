@@ -37,13 +37,24 @@ jobs:
           npm run build
           npx cap sync ios
 
-      - name: Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app || true
+      - name: Xcode + runtime iOS
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_16.2.app
+          xcodebuild -version
+          xcrun simctl list runtimes || true
+          xcodebuild -downloadPlatform iOS || true
+          xcrun simctl list runtimes || true
+          xcrun simctl create "CI-iPhone" "com.apple.CoreSimulator.SimDeviceType.iPhone-16" "com.apple.CoreSimulator.SimRuntime.iOS-18-2" || true
+          xcrun simctl list devices || true
 
       # ─────────── Chemin A : non signée (zéro secret) ───────────
       - name: Archive sans signature
         if: ${{ inputs.signed == false }}
         working-directory: ios/App
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
         run: |
           xcodebuild -workspace App.xcworkspace -scheme App \
             -configuration Release -sdk iphoneos \
@@ -84,6 +95,7 @@ jobs:
         working-directory: ios/App
         env:
           TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
         run: |
           xcodebuild -workspace App.xcworkspace -scheme App \
             -configuration Release -sdk iphoneos \
@@ -95,6 +107,7 @@ jobs:
         if: ${{ inputs.signed == true }}
         env:
           TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
         run: |
           cat > /tmp/ExportOptions.plist <<PLIST
           <?xml version="1.0" encoding="UTF-8"?>
@@ -118,6 +131,7 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
         run: |
           mkdir -p ~/private_keys
           echo "$ASC_KEY_P8" | base64 --decode > ~/private_keys/AuthKey_${ASC_KEY_ID}.p8
